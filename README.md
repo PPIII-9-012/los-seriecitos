@@ -473,9 +473,9 @@ Para subir el sitio a producción:
 
 | Rol | Nombre |
 |-----|--------|
-| Diseñador UX/UI | Matías Fuentes |
-| Desarrollador Frontend | Hugo Olguin |
-| Dirección de Proyecto | Hugo Olguin |
+| Diseñador UX/UI | Edgar reinoso |
+| Desarrollador Frontend |  Edgar reinoso |
+| Dirección de Proyecto |  Edgar reinoso |
 
 ### 11.2 Cliente
 
