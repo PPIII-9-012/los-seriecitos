@@ -184,6 +184,7 @@ function navigate(path) {
   // Use relative page state parameter navigation to avoid breaking file:// protocol
   history.pushState({}, '', path);
   window.scrollTo({ top: 0, behavior: 'instant' });
+  closeMobileMenu(); // Close mobile drawer if open
   render();
 }
 
@@ -193,7 +194,7 @@ function render() {
   const mineral = params.get('mineral');
 
   const container = document.getElementById('dynamic-content');
-  const navLinks = document.querySelectorAll('#topbar nav a[data-view]');
+  const navLinks = document.querySelectorAll('#topbar nav a[data-view], .mobile-drawer-nav a[data-view]');
 
   // Fallback checks: If URL is just "/" or empty view search parameters, default to "inicio"
   const activeView = view || (mineral ? '' : 'inicio');
@@ -684,7 +685,7 @@ function renderMinerales(container) {
       onclick="event.preventDefault(); window.navigate('?mineral=${key}')"
       aria-label="Ver ficha técnica de ${m.name}">
       <!-- PROTOTYPE MINIATURE IMAGES -->
-      <img src="${m.img}" alt="${m.name}" style="width:100%; height:130px; object-fit:contain; background:#111; padding:8px; margin-bottom:16px; border:1px solid #222;">
+      <img src="${m.img}" alt="${m.name}" class="mineral-card-img">
       <span class="mineral-index">0${i + 1} — ${m.formula}</span>
       <h3>${m.name}</h3>
       <span class="mineral-formula">${m.description.slice(0, 80)}…</span>
@@ -739,7 +740,7 @@ function renderMineralDetail(container, key) {
             <p class="mh-desc">${m.description}</p>
           </div>
           <!-- PRODUCT BIG DRAWING / PHOTO -->
-          <img src="${m.img}" alt="${m.name}" style="width:100%; height:200px; object-fit:contain; background:#111; border:1px solid #333; padding:16px;">
+          <img src="${m.img}" alt="${m.name}" class="mineral-detail-img">
         </div>
         <table class="specs-table" aria-label="Especificaciones de ${m.name}">
           <thead>
@@ -980,7 +981,74 @@ window.selectMalla = selectMalla;
 window.navigate = navigate;
 
 /* ============================================================
+   THEME SWITCHER & MOBILE DRAWER LOGIC
+   ============================================================ */
+
+function initTheme() {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') {
+    document.body.classList.add('light-theme');
+  } else {
+    document.body.classList.remove('light-theme');
+  }
+}
+
+function toggleTheme() {
+  const isLight = document.body.classList.toggle('light-theme');
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+}
+
+function openMobileMenu() {
+  const drawer = document.getElementById('mobile-drawer');
+  const overlay = document.getElementById('mobile-overlay');
+  if (drawer && overlay) {
+    drawer.classList.add('open');
+    overlay.classList.add('open');
+  }
+}
+
+function closeMobileMenu() {
+  const drawer = document.getElementById('mobile-drawer');
+  const overlay = document.getElementById('mobile-overlay');
+  if (drawer && overlay) {
+    drawer.classList.remove('open');
+    overlay.classList.remove('open');
+  }
+}
+
+function initThemeAndDrawerListeners() {
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', toggleTheme);
+  }
+
+  const menuToggle = document.getElementById('mobile-menu-toggle');
+  if (menuToggle) {
+    menuToggle.addEventListener('click', openMobileMenu);
+  }
+
+  const menuClose = document.getElementById('mobile-drawer-close');
+  if (menuClose) {
+    menuClose.addEventListener('click', closeMobileMenu);
+  }
+
+  const overlay = document.getElementById('mobile-overlay');
+  if (overlay) {
+    overlay.addEventListener('click', closeMobileMenu);
+  }
+}
+
+// Make globally accessible
+window.closeMobileMenu = closeMobileMenu;
+
+// Run theme check immediately to avoid dark mode flash if user preferred light theme
+initTheme();
+
+/* ============================================================
    INITIALIZATION
    ============================================================ */
 window.addEventListener('popstate', render);
-document.addEventListener('DOMContentLoaded', render);
+document.addEventListener('DOMContentLoaded', () => {
+  initThemeAndDrawerListeners();
+  render();
+});
