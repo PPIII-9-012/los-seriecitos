@@ -17,6 +17,9 @@ Empresa minera de San Luis. 40+ años en molienda de minerales y voladuras contr
 | **Servicios** | Molienda, voladuras controladas, exploración minera, perforación |
 
 ---
+Demo en vivo: [Voladuras San Luis S.R.L.](https://ppiii-9-012.github.io/los-seriecitos/)
+
+---
 un grupo serio
 
 ![foto](https://gifdb.com/images/thumbnail/borderlands-handsome-jack-waving-k09kx95r10mo1izw.gif)
