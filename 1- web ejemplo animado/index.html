@@ -71,20 +71,6 @@
           Minerales
         </a>
         <a
-          href="?view=mallas"
-          data-view="mallas"
-          id="nav-mallas"
-          onclick="event.preventDefault(); window.navigate('?view=mallas')">
-          Mallas
-        </a>
-        <a
-          href="?view=calidad"
-          data-view="calidad"
-          id="nav-calidad"
-          onclick="event.preventDefault(); window.navigate('?view=calidad')">
-          Calidad
-        </a>
-        <a
           href="?view=equipos"
           data-view="equipos"
           id="nav-equipos"
@@ -99,6 +85,12 @@
           Contacto
         </a>
       </nav>
+
+      <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar tema de color" onclick="toggleTheme()">
+        <svg id="theme-toggle-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+          <path d="M12.3 22h-.1c-5.5 0-10-4.5-10-10 0-4.8 3.5-8.9 8.2-9.8.5-.1 1 .2 1.2.7.2.5 0 1.1-.4 1.4-2.8 1.9-4.3 5.2-3.8 8.6.5 3.5 3.3 6.3 6.8 6.8 3.4.5 6.7-1 8.6-3.8.3-.4.9-.6 1.4-.4.5.2.8.7.7 1.2-.9 4.7-5 8.2-9.8 8.3z"/>
+        </svg>
+      </button>
     </header>
 
     <!-- ======================================================

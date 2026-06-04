@@ -21,25 +21,51 @@ html {
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background: #0A0A0A;
-  color: #E0E0E0;
+  background: var(--bg-main);
+  color: var(--text-primary);
   min-height: 100vh;
   overflow-x: hidden;
 }
 
 /* --- CSS Custom Properties -------------------------------- */
 :root {
-  --bg-main:       #0A0A0A;
-  --bg-alt:        #0D0D0D;
-  --bg-deep:       #050505;
-  --gold:          #EAB308;
-  --gold-hover:    #FACC15;
-  --text-white:    #FFFFFF;
-  --text-primary:  #E0E0E0;
-  --text-gray:     #AAA;
-  --text-dark:     #666;
-  --border:        #1A1A1A;
-  --border-strong: #333;
+  --bg-main:            #0A0A0A;
+  --bg-alt:             #0D0D0D;
+  --bg-deep:            #050505;
+  --bg-topbar:          rgba(10, 10, 10, 0.96);
+  --gold:               #EAB308;
+  --gold-hover:         #FACC15;
+  --text-white:         #FFFFFF;
+  --text-primary:       #E0E0E0;
+  --text-gray:          #AAA;
+  --text-dark:          #666;
+  --border:             #1A1A1A;
+  --border-strong:      #333;
+  --logo-filter:        brightness(0) invert(1);
+  --hero-img-filter:    grayscale(0.4) brightness(0.18);
+  --hero-overlay:       linear-gradient(135deg, rgba(10, 10, 10, 0.95) 40%, rgba(234, 179, 8, 0.04) 75%, transparent 100%);
+  --bg-mineral-img:     #111;
+  --border-mineral-img: #222;
+}
+
+[data-theme="light"] {
+  --bg-main:            #F9FAFB;
+  --bg-alt:             #F3F4F6;
+  --bg-deep:            #E5E7EB;
+  --bg-topbar:          rgba(249, 250, 251, 0.96);
+  --gold:               #D97706;
+  --gold-hover:         #B45309;
+  --text-white:         #111827;
+  --text-primary:       #1F2937;
+  --text-gray:          #4B5563;
+  --text-dark:          #9CA3AF;
+  --border:             #E5E7EB;
+  --border-strong:      #D1D5DB;
+  --logo-filter:        brightness(0);
+  --hero-img-filter:    grayscale(0.2) brightness(0.85) opacity(0.25);
+  --hero-overlay:       linear-gradient(135deg, rgba(249, 250, 251, 0.96) 40%, rgba(217, 119, 6, 0.05) 75%, transparent 100%);
+  --bg-mineral-img:     #EAF0F6;
+  --border-mineral-img: #D1D5DB;
 }
 
 /* --- Typography ------------------------------------------- */
@@ -78,7 +104,7 @@ p {
   justify-content: space-between;
   padding: 0 48px;
   height: 64px;
-  background: rgba(10, 10, 10, 0.96);
+  background: var(--bg-topbar);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(12px);
 }
@@ -98,7 +124,7 @@ p {
 #topbar .logo img {
   height: 36px;
   width: auto;
-  filter: brightness(0) invert(1);
+  filter: var(--logo-filter);
 }
 
 #topbar nav {
@@ -143,6 +169,30 @@ p {
 #topbar nav a.active::after,
 #topbar nav a:hover::after {
   transform: scaleX(1);
+}
+
+/* --- Theme Toggle Button ----------------------------------- */
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  border-left: 1px solid var(--border);
+  color: var(--text-gray);
+  padding: 0 24px;
+  height: 64px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+}
+
+.theme-toggle-btn:hover {
+  color: var(--text-white);
+  background: rgba(234, 179, 8, 0.04);
+}
+
+.theme-toggle-btn svg {
+  display: block;
 }
 
 /* --- Main Dynamic Container ------------------------------- */
@@ -280,7 +330,7 @@ textarea:focus-visible {
   position: relative;
   overflow: hidden;
   padding: 80px 48px;
-  background: #0A0A0A;
+  background: var(--bg-main);
 }
 
 .hero .bg {
@@ -293,13 +343,13 @@ textarea:focus-visible {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(0.4) brightness(0.18);
+  filter: var(--hero-img-filter);
 }
 
 .hero .bg .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 40%, rgba(234, 179, 8, 0.04) 75%, transparent 100%);
+  background: var(--hero-overlay);
 }
 
 .hero .bg .grid-overlay {
@@ -469,7 +519,7 @@ textarea:focus-visible {
 
 .stat-card .icon img {
   height: 100%;
-  filter: brightness(0) invert(1);
+  filter: var(--logo-filter);
 }
 
 .stat-card .number-row {
@@ -1008,7 +1058,7 @@ textarea:focus-visible {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: #0A0A0A;
+  background: var(--bg-main);
   border: 3px solid var(--gold);
 }
 

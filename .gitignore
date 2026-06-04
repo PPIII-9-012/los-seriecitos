@@ -1,5 +1,10 @@
 # AG Kit files
 .agents/
+**/.agents/
+.opencode/
+**/.opencode/
+.env*
+**/.env*
 
 # OS files
 .DS_Store

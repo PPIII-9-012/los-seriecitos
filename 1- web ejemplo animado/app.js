@@ -7,6 +7,12 @@
 
 'use strict';
 
+// Initialize theme from storage immediately to prevent visual flash
+(function() {
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+})();
+
 /* ============================================================
    DATA
    ============================================================ */
@@ -108,73 +114,23 @@ const MINERALS = {
     industries: ['Ladrillos refractarios', 'Crisoles e instrumental de fundición', 'Masas cerámicas estructurales'],
     tags: ['Anti-contracción', 'Estabilidad térmica', 'Refractariedad alta'],
   },
+  feldespato_potosico_mezcla: {
+    name: 'Feldespato Potásico Mezcla',
+    formula: 'KAlSi₃O₈ (Mezcla)',
+    img: '5 - Industrial Oscuro Clean/feldespato-potosico-mezcla.png',
+    description: 'Mezcla balanceada de feldespato potásico y cuarzo. Diseñada específicamente para optimizar la vitrificación, blancura y contracción dimensional en pastas de sanitarios B2B.',
+    specs: [
+      { param: 'K₂O + Na₂O', value: '> 9.5%' },
+      { param: 'Fe₂O₃', value: '< 0.15%' },
+      { param: 'Al₂O₃', value: '15 – 17%' },
+      { param: 'SiO₂ Libre', value: '18 – 22%' },
+      { param: 'Granulometría', value: '#200 a #325 Tyler' },
+    ],
+    industries: ['Vajilla fina y sanitarios', 'Porcelanato', 'Esmaltes cerámicos'],
+    tags: ['Sanitarios', 'Vitrificante', 'Especialidad'],
+  },
 };
 
-const MALLAS = [
-  {
-    num: '#400',
-    microns: '37 µm',
-    industries: [
-      { name: 'Esmaltes y fritas', desc: 'Cobertura total de grano en aplicaciones vidriadas de altísima definición.' },
-      { name: 'Farmacia / Cosmética', desc: 'Relleno de talcos y polvos de alta finura con especificación USP.' },
-    ],
-    minerals: ['Cuarzo', 'Pirofilita', 'Baritina'],
-  },
-  {
-    num: '#325',
-    microns: '44 µm',
-    industries: [
-      { name: 'Sanitarios (WC/lavabos)', desc: 'Requisito de malla estándar para pasta de porcelana sanitaria de primera calidad.' },
-      { name: 'Porcelana técnica', desc: 'Componente fundente en piezas de baja absorción y alta densidad.' },
-    ],
-    minerals: ['Feldespato Potásico', 'Albita', 'Cuarzo'],
-  },
-  {
-    num: '#200',
-    microns: '74 µm',
-    industries: [
-      { name: 'Cerámica de revestimiento', desc: 'Mezclas de cuerpo cerámico para gres y azulejos de alta resistencia.' },
-      { name: 'Vidrio especial', desc: 'Fusiones de SiO₂ de alta pureza para borosilicato y vidrio neutro.' },
-    ],
-    minerals: ['Cuarzo', 'Albita', 'Baritina', 'Pirofilita'],
-  },
-  {
-    num: '#120',
-    microns: '125 µm',
-    industries: [
-      { name: 'Fundición', desc: 'Arena de moldeo para fundición en hierro y acero con tolerancias de dilatación térmica.' },
-      { name: 'Vidrio plano', desc: 'Formulación de batch industrial para vidrio float de construcción.' },
-    ],
-    minerals: ['Cuarzo'],
-  },
-  {
-    num: '#100',
-    microns: '149 µm',
-    industries: [
-      { name: 'Porcelana eléctrica', desc: 'Componente refractario en aisladores de alta tensión (norma IEC 60672).' },
-      { name: 'Agroquímicos', desc: 'Soporte y diluyente en formulaciones de insecticidas en polvo.' },
-    ],
-    minerals: ['Pirofilita', 'Feldespato Potásico'],
-  },
-  {
-    num: '#30/80',
-    microns: '595 – 177 µm',
-    industries: [
-      { name: 'Filtración de agua', desc: 'Lecho filtrante en sistemas de tratamiento de aguas potables e industriales.' },
-      { name: 'Construcción', desc: 'Árido fino en morteros, hormigones ligeros y revoques.' },
-    ],
-    minerals: ['Cuarzo'],
-  },
-  {
-    num: '#8/20',
-    microns: '2380 – 850 µm',
-    industries: [
-      { name: 'Fracturación hidráulica (Fracking)', desc: 'Arena propante de alta resistencia a la compresión para mantenimiento de fracturas.' },
-      { name: 'Filtros de piscinas', desc: 'Arena filtrante certificada para sistemas de recirculación de agua.' },
-    ],
-    minerals: ['Cuarzo', 'Chamote'],
-  },
-];
 
 /* ============================================================
    ROUTER & ENGINE
@@ -216,12 +172,6 @@ function render() {
         break;
       case 'minerales':
         renderMinerales(container);
-        break;
-      case 'mallas':
-        renderMallas(container);
-        break;
-      case 'calidad':
-        renderCalidad(container);
         break;
       case 'equipos':
         renderEquipos(container);
@@ -320,6 +270,52 @@ function renderHome(container) {
               <span class="number" data-count="5">5</span><span class="suffix">+</span>
             </div>
             <div class="label">Clientes B2B Activos</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- NUESTROS MATERIALES (SHOWCASE COMPLETO) -->
+      <section class="section-view" style="border-top: 1px solid var(--border); padding-top: 60px;">
+        <span class="view-kicker">Materias Primas Críticas</span>
+        <div class="view-header">
+          <h2>Nuestros <span>Materiales y Minerales</span></h2>
+          <p>Extraídos de yacimientos propios en San Luis y procesados bajo normas analíticas de granulometría y pureza.</p>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:20px;">
+          <div style="background:var(--bg-alt); border:1px solid var(--border); padding:24px; text-align:center;">
+            <img src="5 - Industrial Oscuro Clean/cuarzo.png" alt="Cuarzo" style="height:120px; width:100%; object-fit:contain; background:var(--bg-mineral-img); padding:8px; margin-bottom:16px; border:1px solid var(--border-mineral-img);">
+            <h3 style="font-size:18px; color:var(--text-white); margin-bottom:8px; font-weight:700;">Cuarzo Grado A</h3>
+            <p style="font-size:13px; color:var(--text-gray); line-height:1.5;">SiO₂ de alta pureza (&gt;99.5%) and ultra bajo hierro para vidrio técnico y vitrocerámica.</p>
+          </div>
+          <div style="background:var(--bg-alt); border:1px solid var(--border); padding:24px; text-align:center;">
+            <img src="5 - Industrial Oscuro Clean/feldespato-potosico.png" alt="Feldespato Potásico" style="height:120px; width:100%; object-fit:contain; background:var(--bg-mineral-img); padding:8px; margin-bottom:16px; border:1px solid var(--border-mineral-img);">
+            <h3 style="font-size:18px; color:var(--text-white); margin-bottom:8px; font-weight:700;">Feldespato Potásico</h3>
+            <p style="font-size:13px; color:var(--text-gray); line-height:1.5;">Fundente potásico KAlSi₃O₈ para esmaltes, porcelanatos y sanitarios.</p>
+          </div>
+          <div style="background:var(--bg-alt); border:1px solid var(--border); padding:24px; text-align:center;">
+            <img src="5 - Industrial Oscuro Clean/feldespato-sodico.png" alt="Feldespato Sódico" style="height:120px; width:100%; object-fit:contain; background:var(--bg-mineral-img); padding:8px; margin-bottom:16px; border:1px solid var(--border-mineral-img);">
+            <h3 style="font-size:18px; color:var(--text-white); margin-bottom:8px; font-weight:700;">Albita (Feldespato Sódico)</h3>
+            <p style="font-size:13px; color:var(--text-gray); line-height:1.5;">NaAlSi₃O₈ de baja temperatura de fusión que optimiza la sinterización de pastas.</p>
+          </div>
+          <div style="background:var(--bg-alt); border:1px solid var(--border); padding:24px; text-align:center;">
+            <img src="5 - Industrial Oscuro Clean/feldespato-potosico-mezcla.png" alt="Feldespato Potásico Mezcla" style="height:120px; width:100%; object-fit:contain; background:var(--bg-mineral-img); padding:8px; margin-bottom:16px; border:1px solid var(--border-mineral-img);">
+            <h3 style="font-size:18px; color:var(--text-white); margin-bottom:8px; font-weight:700;">Feldespato Potásico Mezcla</h3>
+            <p style="font-size:13px; color:var(--text-gray); line-height:1.5;">Fórmula pre-mezclada óptima para pastas sanitarias B2B de gran blancura.</p>
+          </div>
+          <div style="background:var(--bg-alt); border:1px solid var(--border); padding:24px; text-align:center;">
+            <img src="5 - Industrial Oscuro Clean/pirofilita.png" alt="Pirofilita" style="height:120px; width:100%; object-fit:contain; background:var(--bg-mineral-img); padding:8px; margin-bottom:16px; border:1px solid var(--border-mineral-img);">
+            <h3 style="font-size:18px; color:var(--text-white); margin-bottom:8px; font-weight:700;">Pirofilita</h3>
+            <p style="font-size:13px; color:var(--text-gray); line-height:1.5;">Filosilicato refractario ideal para cerámicas refractarias y porcelana eléctrica.</p>
+          </div>
+          <div style="background:var(--bg-alt); border:1px solid var(--border); padding:24px; text-align:center;">
+            <img src="5 - Industrial Oscuro Clean/baritina.png" alt="Baritina" style="height:120px; width:100%; object-fit:contain; background:var(--bg-mineral-img); padding:8px; margin-bottom:16px; border:1px solid var(--border-mineral-img);">
+            <h3 style="font-size:18px; color:var(--text-white); margin-bottom:8px; font-weight:700;">Baritina</h3>
+            <p style="font-size:13px; color:var(--text-gray); line-height:1.5;">BaSO₄ de alta densidad específico (4.2+) para lodos de perforación y pinturas.</p>
+          </div>
+          <div style="background:var(--bg-alt); border:1px solid var(--border); padding:24px; text-align:center;">
+            <img src="5 - Industrial Oscuro Clean/chamote.png" alt="Chamote" style="height:120px; width:100%; object-fit:contain; background:var(--bg-mineral-img); padding:8px; margin-bottom:16px; border:1px solid var(--border-mineral-img);">
+            <h3 style="font-size:18px; color:var(--text-white); margin-bottom:8px; font-weight:700;">Chamote</h3>
+            <p style="font-size:13px; color:var(--text-gray); line-height:1.5;">Estabilizador dimensional cerámico refractario para ladrillos y crisoles.</p>
           </div>
         </div>
       </section>
@@ -684,7 +680,7 @@ function renderMinerales(container) {
       onclick="event.preventDefault(); window.navigate('?mineral=${key}')"
       aria-label="Ver ficha técnica de ${m.name}">
       <!-- PROTOTYPE MINIATURE IMAGES -->
-      <img src="${m.img}" alt="${m.name}" style="width:100%; height:130px; object-fit:contain; background:#111; padding:8px; margin-bottom:16px; border:1px solid #222;">
+      <img src="${m.img}" alt="${m.name}" style="width:100%; height:130px; object-fit:contain; background:var(--bg-mineral-img); padding:8px; margin-bottom:16px; border:1px solid var(--border-mineral-img);">
       <span class="mineral-index">0${i + 1} — ${m.formula}</span>
       <h3>${m.name}</h3>
       <span class="mineral-formula">${m.description.slice(0, 80)}…</span>
@@ -739,7 +735,7 @@ function renderMineralDetail(container, key) {
             <p class="mh-desc">${m.description}</p>
           </div>
           <!-- PRODUCT BIG DRAWING / PHOTO -->
-          <img src="${m.img}" alt="${m.name}" style="width:100%; height:200px; object-fit:contain; background:#111; border:1px solid #333; padding:16px;">
+          <img src="${m.img}" alt="${m.name}" style="width:100%; height:200px; object-fit:contain; background:var(--bg-mineral-img); border:1px solid var(--border-mineral-img); padding:16px;">
         </div>
         <table class="specs-table" aria-label="Especificaciones de ${m.name}">
           <thead>
@@ -764,223 +760,40 @@ function renderMineralDetail(container, key) {
   `;
 }
 
-/* ============================================================
-   VIEW: MALLAS
-   ============================================================ */
-function renderMallas(container) {
-  const buttons = MALLAS.map((m, i) => `
-    <button
-      class="malla-btn"
-      id="malla-btn-${i}"
-      onclick="selectMalla(${i})"
-      aria-pressed="${i === 0 ? 'true' : 'false'}"
-      aria-label="Malla ${m.num}, ${m.microns}">
-      <span class="mb-num">${m.num}</span>
-      <span class="mb-size">${m.microns}</span>
-    </button>
-  `).join('');
-
-  const details = MALLAS.map((m, i) => `
-    <div class="malla-info ${i === 0 ? 'active' : ''}" id="malla-info-${i}" role="tabpanel">
-      <span class="mi-num">${m.num}</span>
-      <span class="mi-size">${m.microns} — Apertura Nominal de Malla Tyler</span>
-      <ul class="industries-list">
-        ${m.industries.map(ind => `
-          <li>
-            <span>
-              <span class="ind-name">${ind.name}</span>
-              <span class="ind-desc">${ind.desc}</span>
-            </span>
-          </li>
-        `).join('')}
-      </ul>
-      <p class="mineral-for">
-        Minerales disponibles en esta granulometría:
-        ${m.minerals.map(mn => `<span>${mn}</span>`).join('')}
-      </p>
-    </div>
-  `).join('');
-
-  container.innerHTML = `
-    <div class="view-container">
-      <div class="mallas-view" id="main-content-target">
-        <div class="view-header">
-          <span class="view-kicker">Distribución Granulométrica</span>
-          <h1>Especificaciones por Malla</h1>
-          <p>Seleccioná la malla Tyler de corte para visualizar sus aplicaciones B2B más comunes y los minerales disponibles.</p>
-        </div>
-        <div class="mallas-layout">
-          <div class="mallas-sidebar" role="tablist" aria-label="Mallas industriales">
-            <span class="sidebar-label">Tamizado Tyler</span>
-            <div class="mallas-tabs-container">
-              ${buttons}
-            </div>
-          </div>
-          <div class="mallas-detail">
-            ${details}
-          </div>
-        </div>
-
-        <!-- ADDITIONAL PHOTOS FOR MALLAS -->
-        <div style="margin-top: 60px; border-top: 1px solid var(--border); padding-top: 40px;">
-          <span class="view-kicker">Procesamiento Industrial</span>
-          <h3 style="font-size:24px; color:var(--text-white); margin-bottom:20px; font-weight:800; letter-spacing:-0.02em;">Control de Tamizado y Clasificación en Planta</h3>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-            <div>
-              <img src="5 - Industrial Oscuro Clean/molienda-02.jpg" alt="Silos de Clasificación" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--border-strong);">
-              <p style="font-size:11px; color:var(--text-gray); margin-top:8px; text-transform:uppercase; font-weight:700; letter-spacing:0.05em;">Silos de Clasificación Neumática</p>
-            </div>
-            <div>
-              <img src="5 - Industrial Oscuro Clean/molienda-10.jpg" alt="Stock en Galpones" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--border-strong);">
-              <p style="font-size:11px; color:var(--text-gray); margin-top:8px; text-transform:uppercase; font-weight:700; letter-spacing:0.05em;">Lotes Clasificados Listos para Despacho</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
-  setTimeout(() => selectMalla(0), 0);
-}
-
-function selectMalla(index) {
-  const allBtns = document.querySelectorAll('.malla-btn');
-  const allInfos = document.querySelectorAll('.malla-info');
-
-  allBtns.forEach((btn, i) => {
-    btn.classList.toggle('active', i === index);
-    btn.setAttribute('aria-pressed', i === index ? 'true' : 'false');
-  });
-
-  allInfos.forEach((info, i) => {
-    if (i === index) {
-      info.classList.add('active');
-    } else {
-      info.classList.remove('active');
-    }
-  });
-}
+/* (renderMallas, selectMalla, renderCalidad removed) */
 
 /* ============================================================
-   VIEW: CALIDAD
+   THEME MANAGER (Light/Dark Mode Toggle)
    ============================================================ */
-function renderCalidad(container) {
-  const qualityCards = [
-    { num: '100%', unit: 'Rastreabilidad de lote', title: 'Trazabilidad total batch-a-batch', desc: 'Cada bolsa y big-bag lleva código de lote rastreable hasta el informe analítico del laboratorio en planta.' },
-    { num: 'FRX', unit: 'Rayos X Cuantitativos', title: 'Fluorescencia elemental', desc: 'Método primario para la cuantificación exacta de Fe₂O₃, Al₂O₃, K₂O, Na₂O, SiO₂ y óxidos acompañantes.' },
-    { num: 'ISO', unit: 'Protocolos internacionales', title: 'Normas ISO 2470 / 787 / 9277', desc: 'Medición espectrofotométrica de blancura, distribución granulométrica y superficie específica certificada.' }
-  ].map((c, i) => `
-    <div class="quality-card">
-      <span class="qc-num">${c.num}</span>
-      <span class="qc-unit">${c.unit}</span>
-      <h4>${c.title}</h4>
-      <p>${c.desc}</p>
-    </div>
-  `).join('');
 
-  const labParams = [
-    { name: 'Blancura (ISO 2470)', value: '> 92° ISO', method: 'Espectrofotómetro de reflectancia d/8°' },
-    { name: 'Fe₂O₃ (Cero Hierro)', value: '< 0.015%', method: 'FRX / Espectrometría de plasma (ICP)' },
-    { name: 'Tamizado Tyler', value: '±2% retención máx.', method: 'Tamizado húmedo rotativo' },
-    { name: 'Humedad de despacho', value: '< 0.5%', method: 'Termobalanza infrarroja a 105°C' }
-  ].map((p, i) => `
-    <div class="lab-param">
-      <span class="lp-name">${p.name}</span>
-      <span class="lp-value">${p.value}</span>
-      <span class="lp-method">${p.method}</span>
-    </div>
-  `).join('');
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  updateThemeIcon(newTheme);
+}
 
-  container.innerHTML = `
-    <div class="view-container">
-      <div class="calidad-view" id="main-content-target">
-        <div class="calidad-hero">
-          <div>
-            <div class="view-header" style="border-left: none; padding-left: 0; margin-bottom: 0;">
-              <span class="view-kicker">Laboratorio Analítico · Villa de Praga</span>
-              <h1>Garantía<br><span>Cero Hierro</span></h1>
-              <p style="margin-top: 16px;">
-                Cada lote producido en nuestra planta de Villa de Praga, San Luis, pasa por un riguroso control analítico de blancura y cuantificación de hierro por fluorescencia de rayos X (FRX). El hierro es el enemigo de la blancura técnica. Aquí lo eliminamos mediante purificación magnética de alta intensidad.
-              </p>
-            </div>
-          </div>
-          <div class="cert-box">
-            <span class="cb-label">Límite ferroso garantizado</span>
-            <span class="cb-val">&lt; 0.015%</span>
-            <p>Fe₂O₃ máximo en nuestro cuarzo grado sanitario y vidrio técnico.</p>
-            <div class="cb-divider"></div>
-            <span class="cb-label">blancura garantizada</span>
-            <span class="cb-val">92° ISO</span>
-            <p>Medición espectrofotométrica según norma internacional ISO 2470-1.</p>
-          </div>
-        </div>
-
-        <!-- Comparative Chart: Impurity levels (Fe2O3) -->
-        <div class="quality-comparison-chart">
-          <span class="qcc-title">Nivel Comparativo de Impureza Crítica (Fe₂O₃)</span>
-          <div class="qcc-bars">
-            <div class="qcc-bar-group">
-              <div class="qcc-label-row">
-                <span>Tolerancia de la Industria (Gres Porcelánico y Vidrio Float)</span>
-                <span class="qcc-val">0.100%</span>
-              </div>
-              <div class="qcc-bar-track">
-                <div class="qcc-bar-fill bar-industry"></div>
-              </div>
-            </div>
-            <div class="qcc-bar-group">
-              <div class="qcc-label-row">
-                <span>Especificación Voladuras San Luis (Grado Purificado)</span>
-                <span class="qcc-val vsl-value">&lt; 0.015%</span>
-              </div>
-              <div class="qcc-bar-track">
-                <div class="qcc-bar-fill bar-vsl vsl-fill"></div>
-              </div>
-            </div>
-          </div>
-          <span class="qcc-caption">* Valores expresados en porcentaje de óxido de hierro. Un menor valor de Fe₂O₃ evita coloraciones indeseadas durante la fusión cerámica o vítrea.</span>
-        </div>
-
-        <div class="quality-grid" role="list">
-          ${qualityCards}
-        </div>
-
-        <div class="lab-section">
-          <span class="ls-kicker">Parámetros Críticos de Control</span>
-          <h3>Certificación de Despacho</h3>
-          <p style="margin-bottom: 24px;">
-            El proceso de análisis físico-químico se ejecuta en frentes de extracción, trituración primaria y almacenamiento final. El certificado emitido detalla las siguientes especificaciones:
-          </p>
-          <div class="lab-params">
-            ${labParams}
-          </div>
-        </div>
-
-        <!-- ADDITIONAL PHOTOS FOR CALIDAD -->
-        <div style="margin-top: 60px; border-top: 1px solid var(--border); padding-top: 40px;">
-          <span class="view-kicker">Control de Calidad B2B</span>
-          <h3 style="font-size:24px; color:var(--text-white); margin-bottom:20px; font-weight:800; letter-spacing:-0.02em;">Instalaciones de Control y Ensayos de Blancura</h3>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-            <div>
-              <img src="5 - Industrial Oscuro Clean/molienda-09.jpg" alt="Controladores de Blancura" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--border-strong);">
-              <p style="font-size:11px; color:var(--text-gray); margin-top:8px; text-transform:uppercase; font-weight:700; letter-spacing:0.05em;">Medición Espectrofotométrica de Blancura y Alúmina</p>
-            </div>
-            <div>
-              <img src="fotos del lugar/tecnico.jpeg" alt="Laboratorio de Ensayos" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--border-strong);">
-              <p style="font-size:11px; color:var(--text-gray); margin-top:8px; text-transform:uppercase; font-weight:700; letter-spacing:0.05em;">Ensayos de Trazabilidad y Análisis de Fe₂O₃</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
+function updateThemeIcon(theme) {
+  const icon = document.getElementById('theme-toggle-icon');
+  if (!icon) return;
+  if (theme === 'light') {
+    icon.innerHTML = `<path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-12.37c-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.39.39-1.03 0-1.41zm-12.37 12.37c-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.39.39-1.03 0-1.41z"/>`;
+  } else {
+    icon.innerHTML = `<path d="M12.3 22h-.1c-5.5 0-10-4.5-10-10 0-4.8 3.5-8.9 8.2-9.8.5-.1 1 .2 1.2.7.2.5 0 1.1-.4 1.4-2.8 1.9-4.3 5.2-3.8 8.6.5 3.5 3.3 6.3 6.8 6.8 3.4.5 6.7-1 8.6-3.8.3-.4.9-.6 1.4-.4.5.2.8.7.7 1.2-.9 4.7-5 8.2-9.8 8.3z"/>`;
+  }
 }
 
 // Global exposure
-window.selectMalla = selectMalla;
+window.toggleTheme = toggleTheme;
 window.navigate = navigate;
 
 /* ============================================================
    INITIALIZATION
    ============================================================ */
 window.addEventListener('popstate', render);
-document.addEventListener('DOMContentLoaded', render);
+document.addEventListener('DOMContentLoaded', () => {
+  render();
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+  updateThemeIcon(currentTheme);
+});
