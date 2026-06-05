@@ -106,9 +106,6 @@
     industries: ['Ladrillos refractarios', 'Crisoles e instrumental de fundición', 'Masas cerámicas estructurales'],
     tags: ['Anti-contracción', 'Estabilidad térmica', 'Refractariedad alta'],
   },
-};Crisoles e instrumental de fundición', 'Masas cerámicas estructurales'],
-    tags: ['Anti-contracción', 'Estabilidad térmica', 'Refractariedad alta'],
-  },
 };
 
 const MALLAS = [
