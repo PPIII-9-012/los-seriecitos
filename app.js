@@ -9,13 +9,11 @@
 
 /* ============================================================
    DATA
-   ============================================================ */
-
-const MINERALS = {
+   ============================================================ */const MINERALS = {
   cuarzo: {
     name: 'Cuarzo',
     formula: 'SiO₂',
-    img: '5 - Industrial Oscuro Clean/cuarzo.png',
+    img: 'assets/mineral-cuarzo.png',
     description: 'Mineral industrial de alta pureza. Su dureza Mohs 7 y resistencia química lo posicionan como materia prima esencial en industrias de alto valor técnico.',
     specs: [
       { param: 'Pureza (SiO₂)', value: '> 99.5%' },
@@ -31,7 +29,7 @@ const MINERALS = {
   feldespato_potosico: {
     name: 'Feldespato Potásico',
     formula: 'KAlSi₃O₈',
-    img: '5 - Industrial Oscuro Clean/feldespato-potosico.png',
+    img: 'assets/mineral-feldespato-potasico.png',
     description: 'Fundente potásico de primera línea. Aporta gran vitrificación, resistencia mecánica y blancura a pastas cerámicas, esmaltes y porcelanatos sanitarios.',
     specs: [
       { param: 'K₂O', value: '> 10.5%' },
@@ -47,7 +45,7 @@ const MINERALS = {
   albita: {
     name: 'Albita (Feldespato Sódico)',
     formula: 'NaAlSi₃O₈',
-    img: '5 - Industrial Oscuro Clean/feldespato-sodico.png',
+    img: 'assets/mineral-albita-sodico.png',
     description: 'Feldespato sódico de alta pureza. Reduce la temperatura de sinterización y mejora la vitrificación de la masa en pastas y esmaltes.',
     specs: [
       { param: 'Na₂O', value: '> 8.5%' },
@@ -63,7 +61,7 @@ const MINERALS = {
   pirofilita: {
     name: 'Pirofilita',
     formula: 'Al₂Si₄O₁₀(OH)₂',
-    img: '5 - Industrial Oscuro Clean/pirofilita.png',
+    img: 'assets/mineral-pirofilita.png',
     description: 'Filosilicato laminar con excelentes propiedades refractarias, lubricantes y dieléctricas. Utilizada en revestimientos de alta temperatura y porcelana eléctrica.',
     specs: [
       { param: 'Al₂O₃', value: '> 28%' },
@@ -79,7 +77,7 @@ const MINERALS = {
   baritina: {
     name: 'Baritina',
     formula: 'BaSO₄',
-    img: '5 - Industrial Oscuro Clean/baritina.png',
+    img: 'assets/mineral-baritina.png',
     description: 'Sulfato de bario natural de alta densidad específica. Utilizado como agente densificante en fluidos de perforación y formulación de pinturas.',
     specs: [
       { param: 'BaSO₄', value: '> 92%' },
@@ -95,7 +93,7 @@ const MINERALS = {
   chamote: {
     name: 'Chamote',
     formula: 'Al₂O₃ · 2SiO₂',
-    img: '5 - Industrial Oscuro Clean/chamote.png',
+    img: 'assets/mineral-chamote.png',
     description: 'Material cerámico refractario obtenido por calcinación previa de arcillas. Aporta estabilidad dimensional en piezas cerámicas de gran formato y refractarios.',
     specs: [
       { param: 'Al₂O₃', value: '35 – 38%' },
@@ -106,6 +104,9 @@ const MINERALS = {
       { param: 'Contracción térmica', value: 'Mínima / Nula' },
     ],
     industries: ['Ladrillos refractarios', 'Crisoles e instrumental de fundición', 'Masas cerámicas estructurales'],
+    tags: ['Anti-contracción', 'Estabilidad térmica', 'Refractariedad alta'],
+  },
+};Crisoles e instrumental de fundición', 'Masas cerámicas estructurales'],
     tags: ['Anti-contracción', 'Estabilidad térmica', 'Refractariedad alta'],
   },
 };
@@ -267,7 +268,7 @@ function renderHome(container) {
       <!-- HERO -->
       <section class="hero">
         <div class="bg">
-          <img src="fotos del lugar/frente.jpeg" alt="Frente de cantera Voladuras San Luis">
+          <img src="assets/operacion-frente-cantera.jpeg" alt="Frente de cantera Voladuras San Luis">
           <div class="overlay"></div>
           <div class="grid-overlay"></div>
           <div class="accent-line"></div>
@@ -295,28 +296,28 @@ function renderHome(container) {
       <section class="stats-section">
         <div class="stats-grid">
           <div class="stat-card">
-            <div class="icon"><img src="svg-experiencia.svg" alt="Experiencia"></div>
+            <div class="icon"><img src="assets/icon-experiencia.svg" alt="Experiencia"></div>
             <div class="number-row">
               <span class="number" data-count="40">40</span><span class="suffix">+</span>
             </div>
             <div class="label">Años de Trayectoria</div>
           </div>
           <div class="stat-card">
-            <div class="icon"><img src="svg-mineria.svg" alt="Perforación"></div>
+            <div class="icon"><img src="assets/icon-mineria.svg" alt="Perforación"></div>
             <div class="number-row">
               <span class="number" data-count="10">10</span><span class="suffix">+</span>
             </div>
             <div class="label">Perforadoras Activas</div>
           </div>
           <div class="stat-card">
-            <div class="icon"><img src="svg-ingenieria.svg" alt="Vehículos"></div>
+            <div class="icon"><img src="assets/icon-ingenieria.svg" alt="Vehículos"></div>
             <div class="number-row">
               <span class="number" data-count="12">12</span>
             </div>
             <div class="label">Vehículos en Flota</div>
           </div>
           <div class="stat-card">
-            <div class="icon"><img src="svg-experiencia.svg" alt="Clientes"></div>
+            <div class="icon"><img src="assets/icon-experiencia.svg" alt="Clientes"></div>
             <div class="number-row">
               <span class="number" data-count="5">5</span><span class="suffix">+</span>
             </div>
@@ -334,80 +335,80 @@ function renderHome(container) {
         </div>
         <div class="gallery-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
           <div>
-            <img src="fotos del lugar/frente.jpeg" alt="Frente de Cantera" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:#777; margin-top:6px; text-transform:uppercase; font-weight:700;">Frente de Explotación</p>
+            <img src="assets/operacion-frente-cantera.jpeg" alt="Frente de Cantera" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Frente de Explotación</p>
           </div>
           <div>
-            <img src="fotos del lugar/maquina.jpeg" alt="Maquinaria de Perforación" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:#777; margin-top:6px; text-transform:uppercase; font-weight:700;">Perforadora Sandvik</p>
+            <img src="assets/perforadora-sandvik.jpeg" alt="Maquinaria de Perforación" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Perforadora Sandvik</p>
           </div>
           <div>
-            <img src="fotos del lugar/rampa.jpeg" alt="Rampa de Acceso" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:#777; margin-top:6px; text-transform:uppercase; font-weight:700;">Rampa de Transporte</p>
+            <img src="assets/rampa-transporte.jpeg" alt="Rampa de Acceso" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Rampa de Transporte</p>
           </div>
           <div>
-            <img src="fotos del lugar/reservas.jpeg" alt="Reservas Minerales" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:#777; margin-top:6px; text-transform:uppercase; font-weight:700;">Canteras Reservas</p>
+            <img src="assets/yacimiento-reservas.jpeg" alt="Reservas Minerales" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Canteras Reservas</p>
           </div>
           <div>
-            <img src="fotos del lugar/rocas.jpeg" alt="Frente de Rocas" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:#777; margin-top:6px; text-transform:uppercase; font-weight:700;">Pizarra Mineral</p>
+            <img src="assets/frente-pizarra-mineral.jpeg" alt="Frente de Rocas" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Pizarra Mineral</p>
           </div>
           <div>
-            <img src="fotos del lugar/sal.jpeg" alt="Yacimiento Salino" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:#777; margin-top:6px; text-transform:uppercase; font-weight:700;">Yacimiento Calizo/Sal</p>
+            <img src="assets/yacimiento-calizo.jpeg" alt="Yacimiento Salino" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Yacimiento Calizo/Sal</p>
           </div>
           <div>
-            <img src="fotos del lugar/tecnico.jpeg" alt="Personal Técnico" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:#777; margin-top:6px; text-transform:uppercase; font-weight:700;">Ensayos Geológicos</p>
+            <img src="assets/ensayo-geologico-tecnico.jpeg" alt="Personal Técnico" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Ensayos Geológicos</p>
           </div>
           <div>
-            <img src="5 - Industrial Oscuro Clean/capacidad-operativa.jpg" alt="Capacidad Operativa" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:#777; margin-top:6px; text-transform:uppercase; font-weight:700;">Frente de Trabajo VSL</p>
+            <img src="assets/operacion-cargadora.jpg" alt="Capacidad Operativa" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Frente de Trabajo VSL</p>
           </div>
           <div>
-            <img src="5 - Industrial Oscuro Clean/molienda-01-950x534.jpg" alt="Molienda 01" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:#777; margin-top:6px; text-transform:uppercase; font-weight:700;">Planta Procesamiento</p>
+            <img src="assets/planta-molienda.jpg" alt="Molienda 01" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Planta Procesamiento</p>
           </div>
           <div>
-            <img src="5 - Industrial Oscuro Clean/molienda-02.jpg" alt="Molienda 02" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:#777; margin-top:6px; text-transform:uppercase; font-weight:700;">Silos de Clasificación</p>
+            <img src="assets/silos-clasificacion.jpg" alt="Molienda 02" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Silos de Clasificación</p>
           </div>
           <div>
-            <img src="5 - Industrial Oscuro Clean/molienda-03.jpg" alt="Molienda 03" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:#777; margin-top:6px; text-transform:uppercase; font-weight:700;">Líneas de Carga B2B</p>
+            <img src="assets/lineas-despacho-b2b.jpg" alt="Molienda 03" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Líneas de Carga B2B</p>
           </div>
           <div>
-            <img src="5 - Industrial Oscuro Clean/molienda-04.jpg" alt="Molienda 04" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:#777; margin-top:6px; text-transform:uppercase; font-weight:700;">Instalaciones Generales</p>
+            <img src="assets/instalaciones-planta.jpg" alt="Molienda 04" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Instalaciones Generales</p>
           </div>
           <div>
-            <img src="5 - Industrial Oscuro Clean/molienda-05.jpg" alt="Molienda 05" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:#777; margin-top:6px; text-transform:uppercase; font-weight:700;">Naves de Trituración</p>
+            <img src="assets/naves-trituracion.jpg" alt="Molienda 05" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Naves de Trituración</p>
           </div>
           <div>
-            <img src="5 - Industrial Oscuro Clean/molienda-06.jpg" alt="Molienda 06" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:#777; margin-top:6px; text-transform:uppercase; font-weight:700;">Despacho a Granel</p>
+            <img src="assets/despacho-granel-silos.jpg" alt="Molienda 06" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Despacho a Granel</p>
           </div>
           <div>
-            <img src="5 - Industrial Oscuro Clean/molienda-07.jpg" alt="Molienda 07" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:#777; margin-top:6px; text-transform:uppercase; font-weight:700;">Operación Nocturna</p>
+            <img src="assets/operacion-nocturna.jpg" alt="Molienda 07" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Operación Nocturna</p>
           </div>
           <div>
-            <img src="5 - Industrial Oscuro Clean/molienda-08.jpg" alt="Molienda 08" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:#777; margin-top:6px; text-transform:uppercase; font-weight:700;">Sistemas de Perforación</p>
+            <img src="assets/perforadora-orugas.jpg" alt="Molienda 08" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Sistemas de Perforación</p>
           </div>
           <div>
-            <img src="5 - Industrial Oscuro Clean/molienda-09.jpg" alt="Molienda 09" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:#777; margin-top:6px; text-transform:uppercase; font-weight:700;">Controladores de Blancura</p>
+            <img src="assets/laboratorio-espectrofotometro.jpg" alt="Molienda 09" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Controladores de Blancura</p>
           </div>
           <div>
-            <img src="5 - Industrial Oscuro Clean/molienda-10.jpg" alt="Molienda 10" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:#777; margin-top:6px; text-transform:uppercase; font-weight:700;">Stock en Galpones</p>
+            <img src="assets/galpones-stock-lotes.jpg" alt="Molienda 10" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Stock en Galpones</p>
           </div>
           <div>
-            <img src="5 - Industrial Oscuro Clean/molienda-11.jpg" alt="Molienda 11" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:#777; margin-top:6px; text-transform:uppercase; font-weight:700;">Flota Cargadora Pesada</p>
+            <img src="assets/flota-pesada-cargadoras.jpg" alt="Molienda 11" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Flota Cargadora Pesada</p>
           </div>
         </div>
       </section>
@@ -431,10 +432,10 @@ function renderNosotros(container) {
         <div class="about-grid">
           <!-- NOSOTROS PHOTO GRID -->
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-            <img src="5 - Industrial Oscuro Clean/molienda-05.jpg" alt="Molienda" style="width:100%; height:180px; object-fit:cover; border:1px solid #333;">
-            <img src="fotos del lugar/reservas.jpeg" alt="Reservas" style="width:100%; height:180px; object-fit:cover; border:1px solid #333;">
-            <img src="fotos del lugar/rampa.jpeg" alt="Acceso" style="width:100%; height:180px; object-fit:cover; border:1px solid #333;">
-            <img src="fotos del lugar/sal.jpeg" alt="Sal" style="width:100%; height:180px; object-fit:cover; border:1px solid #333;">
+            <img src="assets/naves-trituracion.jpg" alt="Molienda" style="width:100%; height:180px; object-fit:cover; border:1px solid #333;">
+            <img src="assets/yacimiento-reservas.jpeg" alt="Reservas" style="width:100%; height:180px; object-fit:cover; border:1px solid #333;">
+            <img src="assets/rampa-transporte.jpeg" alt="Acceso" style="width:100%; height:180px; object-fit:cover; border:1px solid #333;">
+            <img src="assets/yacimiento-calizo.jpeg" alt="Sal" style="width:100%; height:180px; object-fit:cover; border:1px solid #333;">
           </div>
           
           <div class="text">
@@ -480,7 +481,7 @@ function renderServicios(container) {
         
         <div class="services-grid">
           <div class="service-card" style="padding-top:20px;">
-            <img src="5 - Industrial Oscuro Clean/molienda-01-950x534.jpg" alt="Molienda" style="width:100%; height:150px; object-fit:cover; margin-bottom:20px; border:1px solid #1a1a1a;">
+            <img src="assets/planta-molienda.jpg" alt="Molienda" style="width:100%; height:150px; object-fit:cover; margin-bottom:20px; border:1px solid #1a1a1a;">
             <div class="num">01</div>
             <h3>Molienda de Minerales</h3>
             <p>
@@ -490,7 +491,7 @@ function renderServicios(container) {
           </div>
           
           <div class="service-card" style="padding-top:20px;">
-            <img src="fotos del lugar/rocas.jpeg" alt="Voladuras" style="width:100%; height:150px; object-fit:cover; margin-bottom:20px; border:1px solid #1a1a1a;">
+            <img src="assets/frente-pizarra-mineral.jpeg" alt="Voladuras" style="width:100%; height:150px; object-fit:cover; margin-bottom:20px; border:1px solid #1a1a1a;">
             <div class="num">02</div>
             <h3>Voladuras Controladas</h3>
             <p>
@@ -500,7 +501,7 @@ function renderServicios(container) {
           </div>
           
           <div class="service-card" style="padding-top:20px;">
-            <img src="fotos del lugar/tecnico.jpeg" alt="Exploración" style="width:100%; height:150px; object-fit:cover; margin-bottom:20px; border:1px solid #1a1a1a;">
+            <img src="assets/ensayo-geologico-tecnico.jpeg" alt="Exploración" style="width:100%; height:150px; object-fit:cover; margin-bottom:20px; border:1px solid #1a1a1a;">
             <div class="num">03</div>
             <h3>Exploración y cubicación</h3>
             <p>
@@ -530,8 +531,8 @@ function renderEquipos(container) {
         
         <!-- PROTOTYPE MACHINERY BANNER GRID -->
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:48px;">
-          <img src="fotos del lugar/maquina.jpeg" alt="Sandvik DX680" style="width:100%; height:260px; object-fit:cover; border:1px solid #333;">
-          <img src="5 - Industrial Oscuro Clean/molienda-11.jpg" alt="Pala SDLG" style="width:100%; height:260px; object-fit:cover; border:1px solid #333;">
+          <img src="assets/perforadora-sandvik.jpeg" alt="Sandvik DX680" style="width:100%; height:260px; object-fit:cover; border:1px solid #333;">
+          <img src="assets/flota-pesada-cargadoras.jpg" alt="Pala SDLG" style="width:100%; height:260px; object-fit:cover; border:1px solid #333;">
         </div>
 
         <div class="equipment-grid">
@@ -643,7 +644,7 @@ function renderContacto(container) {
             <div class="detail">
               <div class="txt">
                 <strong>Teléfono Comercial B2B</strong>
-                +54 (0266) 15-4682010 · Lunes a Viernes de 8:00 a 17:00hs.
+                +54 9 2665 00-9836 (Oficina Molienda) · Lunes a Viernes de 8:00 a 17:00hs.
               </div>
             </div>
             
@@ -664,8 +665,8 @@ function renderContacto(container) {
           
           <!-- MULTIPLE IMAGES FOR CONTACT VIEW -->
           <div style="display:grid; grid-template-columns:1fr; gap:16px;">
-            <img src="5 - Industrial Oscuro Clean/capacidad-operativa.jpg" alt="Frente de cantera Voladuras San Luis" style="width: 100%; height: 200px; object-fit:cover; border:1px solid #333;">
-            <img src="fotos del lugar/frente.jpeg" alt="Oficina Planta" style="width: 100%; height: 200px; object-fit:cover; border:1px solid #333;">
+            <img src="assets/operacion-cargadora.jpg" alt="Frente de cantera Voladuras San Luis" style="width: 100%; height: 200px; object-fit:cover; border:1px solid #333;">
+            <img src="assets/operacion-frente-cantera.jpeg" alt="Oficina Planta" style="width: 100%; height: 200px; object-fit:cover; border:1px solid #333;">
           </div>
         </div>
       </section>
@@ -828,11 +829,11 @@ function renderMallas(container) {
           <h3 style="font-size:24px; color:var(--text-white); margin-bottom:20px; font-weight:800; letter-spacing:-0.02em;">Control de Tamizado y Clasificación en Planta</h3>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
             <div>
-              <img src="5 - Industrial Oscuro Clean/molienda-02.jpg" alt="Silos de Clasificación" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--border-strong);">
+              <img src="assets/silos-clasificacion.jpg" alt="Silos de Clasificación" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--border-strong);">
               <p style="font-size:11px; color:var(--text-gray); margin-top:8px; text-transform:uppercase; font-weight:700; letter-spacing:0.05em;">Silos de Clasificación Neumática</p>
             </div>
             <div>
-              <img src="5 - Industrial Oscuro Clean/molienda-10.jpg" alt="Stock en Galpones" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--border-strong);">
+              <img src="assets/galpones-stock-lotes.jpg" alt="Stock en Galpones" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--border-strong);">
               <p style="font-size:11px; color:var(--text-gray); margin-top:8px; text-transform:uppercase; font-weight:700; letter-spacing:0.05em;">Lotes Clasificados Listos para Despacho</p>
             </div>
           </div>
@@ -962,11 +963,11 @@ function renderCalidad(container) {
           <h3 style="font-size:24px; color:var(--text-white); margin-bottom:20px; font-weight:800; letter-spacing:-0.02em;">Instalaciones de Control y Ensayos de Blancura</h3>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
             <div>
-              <img src="5 - Industrial Oscuro Clean/molienda-09.jpg" alt="Controladores de Blancura" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--border-strong);">
+              <img src="assets/laboratorio-espectrofotometro.jpg" alt="Controladores de Blancura" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--border-strong);">
               <p style="font-size:11px; color:var(--text-gray); margin-top:8px; text-transform:uppercase; font-weight:700; letter-spacing:0.05em;">Medición Espectrofotométrica de Blancura y Alúmina</p>
             </div>
             <div>
-              <img src="fotos del lugar/tecnico.jpeg" alt="Laboratorio de Ensayos" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--border-strong);">
+              <img src="assets/ensayo-geologico-tecnico.jpeg" alt="Laboratorio de Ensayos" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--border-strong);">
               <p style="font-size:11px; color:var(--text-gray); margin-top:8px; text-transform:uppercase; font-weight:700; letter-spacing:0.05em;">Ensayos de Trazabilidad y Análisis de Fe₂O₃</p>
             </div>
           </div>
