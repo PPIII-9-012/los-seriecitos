@@ -106,6 +106,21 @@
     industries: ['Ladrillos refractarios', 'Crisoles e instrumental de fundición', 'Masas cerámicas estructurales'],
     tags: ['Anti-contracción', 'Estabilidad térmica', 'Refractariedad alta'],
   },
+  fluorita: {
+    name: 'Fluorita',
+    formula: 'CaF₂',
+    img: 'assets/mineral-fluorita.png',
+    description: 'Fluoruro de calcio obtenido de canteras propias. Empleado de manera crítica en la industria metalúrgica y química, así como en la producción de vidrios ópticos y esmaltes cerámicos especiales.',
+    specs: [
+      { param: 'Aplicación Principal', value: 'Fundente siderúrgico y fabricación de vidrio/cerámica' },
+      { param: 'Presentación', value: 'Granulometría a medida / Big-bags (1.5 TN)' },
+      { param: 'Origen', value: 'San Luis, Argentina' },
+      { param: 'Capacidad de Procesamiento', value: 'Molienda fina de precisión certificada' },
+      { param: 'Control de Impurezas', value: 'Bajo contenido de sílice y compuestos ferrosos' },
+    ],
+    industries: ['Siderurgia y metalurgia', 'Vidrio óptico y plano', 'Esmaltes cerámicos', 'Industria química'],
+    tags: ['Yacimiento propio', 'Fundente', 'Flúor'],
+  },
 };
 
 const MALLAS = [
@@ -213,8 +228,8 @@ function render() {
       case 'servicios':
         renderServicios(container);
         break;
-      case 'minerales':
-        renderMinerales(container);
+      case 'yacimientos':
+        renderYacimientos(container);
         break;
       case 'mallas':
         renderMallas(container);
@@ -463,7 +478,7 @@ function renderServicios(container) {
             <p>
               Procesamiento de cuarzo de alta pureza, feldespato potásico, albita sódica y pirofilita. Molienda seca controlada para obtener granulometrías precisas desde malla #8/20 hasta malla #400 Tyler.
             </p>
-            <a href="?view=minerales" onclick="event.preventDefault(); window.navigate('?view=minerales')" class="arrow">Ver catálogo técnico →</a>
+            <a href="?view=yacimientos" onclick="event.preventDefault(); window.navigate('?view=yacimientos')" class="arrow">Ver catálogo técnico →</a>
           </div>
           
           <div class="service-card" style="padding-top:20px;">
@@ -653,36 +668,89 @@ function renderContacto(container) {
 /* ============================================================
    VIEW: MINERALES (CATALOGO COMPLETO)
    ============================================================ */
-function renderMinerales(container) {
-  const cards = Object.entries(MINERALS).map(([key, m], i) => `
-    <a
-      class="mineral-card"
-      href="?mineral=${key}"
-      id="card-${key}"
-      onclick="event.preventDefault(); window.navigate('?mineral=${key}')"
-      aria-label="Ver ficha técnica de ${m.name}">
-      <!-- PROTOTYPE MINIATURE IMAGES -->
-      <img src="${m.img}" alt="${m.name}" class="mineral-card-img">
-      <span class="mineral-index">0${i + 1} — ${m.formula}</span>
-      <h3>${m.name}</h3>
-      <span class="mineral-formula">${m.description.slice(0, 80)}…</span>
-      <p>${m.description}</p>
-      <div class="mineral-tags">
-        ${m.tags.map(t => `<span class="tag">${t}</span>`).join('')}
-      </div>
-    </a>
-  `).join('');
+function renderYacimientos(container) {
+  const OWNED_DEPOSITS = ['cuarzo', 'feldespato_potosico', 'fluorita'];
+  const OTHER_MINERALS = ['albita', 'pirofilita', 'baritina', 'chamote'];
+
+  const ownedCards = OWNED_DEPOSITS.map((key, i) => {
+    const m = MINERALS[key];
+    if (!m) return '';
+    return `
+      <a
+        class="mineral-card"
+        href="?mineral=${key}"
+        id="card-${key}"
+        onclick="event.preventDefault(); window.navigate('?mineral=${key}')"
+        aria-label="Ver detalles de ${m.name}">
+        <img src="${m.img}" alt="${m.name}" class="mineral-card-img">
+        <span class="mineral-index">0${i + 1} — YACIMIENTO PROPIO</span>
+        <h3>${m.name}</h3>
+        <p>${m.description}</p>
+        <div class="mineral-tags" style="margin-bottom: 24px; margin-top: 16px;">
+          ${m.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+        </div>
+        <div class="card-cta" style="font-size: 11px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 4px; margin-top: auto; padding-top: 16px;">
+          Ver detalles <span style="font-size: 12px; display: inline-block; transition: transform 0.15s ease;">→</span>
+        </div>
+      </a>
+    `;
+  }).join('');
+
+  const otherCards = OTHER_MINERALS.map((key, i) => {
+    const m = MINERALS[key];
+    if (!m) return '';
+    return `
+      <a
+        class="mineral-card"
+        href="?mineral=${key}"
+        id="card-${key}"
+        onclick="event.preventDefault(); window.navigate('?mineral=${key}')"
+        aria-label="Ver detalles de ${m.name}"
+        style="padding: 24px; border: 1px solid var(--border);">
+        <img src="${m.img}" alt="${m.name}" class="mineral-card-img">
+        <span class="mineral-index">MOLIENDA &amp; LOGÍSTICA</span>
+        <h4 style="font-size:18px; color:var(--text-white); margin-bottom:8px;">${m.name}</h4>
+        <p style="font-size:13px; line-height:1.5; color:var(--text-gray); margin-bottom:12px;">${m.description.slice(0, 110)}…</p>
+        <div class="mineral-tags" style="margin-top:12px; margin-bottom:24px;">
+          ${m.tags.map(t => `<span class="tag" style="font-size:9px; padding:2px 6px;">${t}</span>`).join('')}
+        </div>
+        <div class="card-cta" style="font-size: 10px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 4px; margin-top: auto; padding-top: 16px;">
+          Ver detalles <span style="font-size: 11px; display: inline-block; transition: transform 0.15s ease;">→</span>
+        </div>
+      </a>
+    `;
+  }).join('');
 
   container.innerHTML = `
     <div class="view-container">
       <div class="section-view">
-        <span class="view-kicker">Especificaciones Técnicas</span>
-        <div class="view-header">
-          <h1>Minerales <span>No Metalíferos</span></h1>
-          <p>Extracción y molienda certificada bajo rigurosos ensayos físicos y químicos en planta propia en Villa de Praga, San Luis.</p>
+        <span class="view-kicker">Capacidad Industrial y Yacimientos</span>
+        <div class="view-header" style="margin-bottom: 40px;">
+          <h1>Yacimientos <span>y Molienda</span></h1>
+          <div style="margin-top: 24px;">
+            <p style="max-width: 850px; font-size: 15px; color: var(--text-gray); line-height: 1.8; margin-bottom: 16px;">
+              En Voladuras San Luis operamos con el más alto estándar de profesionalismo en la explotación de yacimientos y procesamiento de minerales. Gestionamos frentes de extracción propios de <strong>Cuarzo</strong>, <strong>Feldespato</strong> y <strong>Fluorita</strong> con rigurosos controles de calidad.
+            </p>
+            <p style="max-width: 850px; font-size: 15px; color: var(--text-gray); line-height: 1.8;">
+              Nuestra planta está equipada tecnológicamente para procesar, moler y clasificar a maquila (toll milling) <strong>cualquier tipo de yacimiento o mineral industrial</strong> provisto por su empresa, adaptándonos con máxima precisión a sus necesidades. Además, si requiere de un mineral específico que no esté en nuestro catálogo, tenemos la capacidad técnica y operativa para realizar la búsqueda, exploración y abastecimiento del recurso para su proyecto.
+            </p>
+          </div>
         </div>
-        <div class="minerals-grid" role="list">
-          ${cards}
+
+        <h3 style="font-size: 20px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; font-weight: 700;">Yacimientos Propios</h3>
+        <p style="max-width: 750px; font-size: 14px; color: var(--text-gray); margin-bottom: 24px; line-height: 1.6;">
+          Explotación directa de canteras de la empresa. Seleccione cada material para visualizar su ficha técnica y aplicaciones industriales:
+        </p>
+        <div class="minerals-grid" role="list" style="margin-bottom: 60px;">
+          ${ownedCards}
+        </div>
+
+        <h3 style="font-size: 20px; color: var(--text-white); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; font-weight: 700;">Capacidad de Procesamiento de otros Minerales</h3>
+        <p style="max-width: 750px; font-size: 14px; color: var(--text-gray); margin-bottom: 24px; line-height: 1.6;">
+          Experiencia técnica y operativa procesando otros frentes minerales a la medida del cliente. Seleccione para ver más información técnica:
+        </p>
+        <div class="minerals-grid" role="list" style="grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; background: transparent; border: none;">
+          ${otherCards}
         </div>
       </div>
     </div>
@@ -706,9 +774,9 @@ function renderMineralDetail(container, key) {
       <div class="mineral-detail-view" id="main-content-target">
         <button
           class="back-btn"
-          onclick="window.navigate('?view=minerales')"
-          aria-label="Volver al catálogo de minerales">
-          <span class="arrow-char" aria-hidden="true">←</span> Volver al catálogo
+          onclick="window.navigate('?view=yacimientos')"
+          aria-label="Volver a yacimientos">
+          <span class="arrow-char" aria-hidden="true">←</span> Volver a yacimientos
         </button>
         <div class="mineral-hero" style="display:grid; grid-template-columns:1.5fr 1fr; gap:40px; align-items:start;">
           <div>

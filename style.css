@@ -698,30 +698,26 @@ textarea:focus-visible {
   padding: 40px;
   cursor: pointer;
   text-decoration: none;
-  display: block;
+  display: flex;
+  flex-direction: column;
   position: relative;
   overflow: hidden;
-}
-
-.mineral-card::after {
-  content: 'Ficha Técnica →';
-  position: absolute;
-  bottom: 24px;
-  right: 24px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gold);
-  opacity: 0;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .mineral-card:hover {
-  background: rgba(234, 179, 8, 0.02);
+  background: rgba(234, 179, 8, 0.03);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  z-index: 2;
 }
 
-.mineral-card:hover::after {
-  opacity: 1;
+.mineral-card:hover .card-cta {
+  color: var(--gold-hover) !important;
+}
+
+.mineral-card:hover .card-cta span {
+  transform: translateX(4px);
 }
 
 .mineral-card .mineral-index {
