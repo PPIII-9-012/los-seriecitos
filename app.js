@@ -337,28 +337,13 @@ function renderHome(container) {
           </div>
           <div>
             <img src="assets/perforadora-sandvik.jpeg" alt="Maquinaria de Perforación" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Perforadora Sandvik</p>
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Pala cargadora</p>
           </div>
           <div>
             <img src="assets/rampa-transporte.jpeg" alt="Rampa de Acceso" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Rampa de Transporte</p>
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Zaranda</p>
           </div>
-          <div>
-            <img src="assets/yacimiento-reservas.jpeg" alt="Reservas Minerales" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Canteras Reservas</p>
-          </div>
-          <div>
-            <img src="assets/frente-pizarra-mineral.jpeg" alt="Frente de Rocas" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Pizarra Mineral</p>
-          </div>
-          <div>
-            <img src="assets/yacimiento-calizo.jpeg" alt="Yacimiento Salino" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Yacimiento Calizo/Sal</p>
-          </div>
-          <div>
-            <img src="assets/ensayo-geologico-tecnico.jpeg" alt="Personal Técnico" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Ensayos Geológicos</p>
-          </div>
+
           <div>
             <img src="assets/operacion-cargadora.jpg" alt="Capacidad Operativa" style="height:220px; width:100%; object-fit:cover;">
             <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Frente de Trabajo VSL</p>
@@ -367,10 +352,7 @@ function renderHome(container) {
             <img src="assets/planta-molienda.jpg" alt="Molienda 01" style="height:220px; width:100%; object-fit:cover;">
             <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Planta Procesamiento</p>
           </div>
-          <div>
-            <img src="assets/silos-clasificacion.jpg" alt="Molienda 02" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Silos de Clasificación</p>
-          </div>
+
           <div>
             <img src="assets/lineas-despacho-b2b.jpg" alt="Molienda 03" style="height:220px; width:100%; object-fit:cover;">
             <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Líneas de Carga B2B</p>
@@ -403,10 +385,7 @@ function renderHome(container) {
             <img src="assets/galpones-stock-lotes.jpg" alt="Molienda 10" style="height:220px; width:100%; object-fit:cover;">
             <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Stock en Galpones</p>
           </div>
-          <div>
-            <img src="assets/flota-pesada-cargadoras.jpg" alt="Molienda 11" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Flota Cargadora Pesada</p>
-          </div>
+
         </div>
       </section>
     </div>
@@ -430,9 +409,9 @@ function renderNosotros(container) {
           <!-- NOSOTROS PHOTO GRID -->
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
             <img src="assets/naves-trituracion.jpg" alt="Molienda" style="width:100%; height:180px; object-fit:cover; border:1px solid #333;">
-            <img src="assets/yacimiento-reservas.jpeg" alt="Reservas" style="width:100%; height:180px; object-fit:cover; border:1px solid #333;">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='100%' height='100%' fill='%23222' stroke='%23333' stroke-width='2'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='48' font-weight='bold' fill='%23666'>?</text></svg>" alt="Reservas (Por reemplazar)" style="width:100%; height:180px; object-fit:cover; border:1px solid #333;">
             <img src="assets/rampa-transporte.jpeg" alt="Acceso" style="width:100%; height:180px; object-fit:cover; border:1px solid #333;">
-            <img src="assets/yacimiento-calizo.jpeg" alt="Sal" style="width:100%; height:180px; object-fit:cover; border:1px solid #333;">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='100%' height='100%' fill='%23222' stroke='%23333' stroke-width='2'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='48' font-weight='bold' fill='%23666'>?</text></svg>" alt="Sal (Por reemplazar)" style="width:100%; height:180px; object-fit:cover; border:1px solid #333;">
           </div>
           
           <div class="text">
@@ -488,7 +467,7 @@ function renderServicios(container) {
           </div>
           
           <div class="service-card" style="padding-top:20px;">
-            <img src="assets/frente-pizarra-mineral.jpeg" alt="Voladuras" style="width:100%; height:150px; object-fit:cover; margin-bottom:20px; border:1px solid #1a1a1a;">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='100%' height='100%' fill='%23222' stroke='%23333' stroke-width='2'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='48' font-weight='bold' fill='%23666'>?</text></svg>" alt="Voladuras (Por reemplazar)" style="width:100%; height:150px; object-fit:cover; margin-bottom:20px; border:1px solid #1a1a1a;">
             <div class="num">02</div>
             <h3>Voladuras Controladas</h3>
             <p>
@@ -498,7 +477,7 @@ function renderServicios(container) {
           </div>
           
           <div class="service-card" style="padding-top:20px;">
-            <img src="assets/ensayo-geologico-tecnico.jpeg" alt="Exploración" style="width:100%; height:150px; object-fit:cover; margin-bottom:20px; border:1px solid #1a1a1a;">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='100%' height='100%' fill='%23222' stroke='%23333' stroke-width='2'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='48' font-weight='bold' fill='%23666'>?</text></svg>" alt="Exploración (Por reemplazar)" style="width:100%; height:150px; object-fit:cover; margin-bottom:20px; border:1px solid #1a1a1a;">
             <div class="num">03</div>
             <h3>Exploración y cubicación</h3>
             <p>
@@ -529,7 +508,7 @@ function renderEquipos(container) {
         <!-- PROTOTYPE MACHINERY BANNER GRID -->
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:48px;">
           <img src="assets/perforadora-sandvik.jpeg" alt="Sandvik DX680" style="width:100%; height:260px; object-fit:cover; border:1px solid #333;">
-          <img src="assets/flota-pesada-cargadoras.jpg" alt="Pala SDLG" style="width:100%; height:260px; object-fit:cover; border:1px solid #333;">
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='100%' height='100%' fill='%23222' stroke='%23333' stroke-width='2'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='48' font-weight='bold' fill='%23666'>?</text></svg>" alt="Pala SDLG (Por reemplazar)" style="width:100%; height:260px; object-fit:cover; border:1px solid #333;">
         </div>
 
         <div class="equipment-grid">
@@ -826,7 +805,7 @@ function renderMallas(container) {
           <h3 style="font-size:24px; color:var(--text-white); margin-bottom:20px; font-weight:800; letter-spacing:-0.02em;">Control de Tamizado y Clasificación en Planta</h3>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
             <div>
-              <img src="assets/silos-clasificacion.jpg" alt="Silos de Clasificación" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--border-strong);">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='100%' height='100%' fill='%23222' stroke='%23333' stroke-width='2'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='48' font-weight='bold' fill='%23666'>?</text></svg>" alt="Silos de Clasificación (Por reemplazar)" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--border-strong);">
               <p style="font-size:11px; color:var(--text-gray); margin-top:8px; text-transform:uppercase; font-weight:700; letter-spacing:0.05em;">Silos de Clasificación Neumática</p>
             </div>
             <div>
@@ -964,7 +943,7 @@ function renderCalidad(container) {
               <p style="font-size:11px; color:var(--text-gray); margin-top:8px; text-transform:uppercase; font-weight:700; letter-spacing:0.05em;">Medición Espectrofotométrica de Blancura y Alúmina</p>
             </div>
             <div>
-              <img src="assets/ensayo-geologico-tecnico.jpeg" alt="Laboratorio de Ensayos" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--border-strong);">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='100%' height='100%' fill='%23222' stroke='%23333' stroke-width='2'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='48' font-weight='bold' fill='%23666'>?</text></svg>" alt="Laboratorio de Ensayos (Por reemplazar)" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--border-strong);">
               <p style="font-size:11px; color:var(--text-gray); margin-top:8px; text-transform:uppercase; font-weight:700; letter-spacing:0.05em;">Ensayos de Trazabilidad y Análisis de Fe₂O₃</p>
             </div>
           </div>
