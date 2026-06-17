@@ -1,0 +1,339 @@
+CONTRATO DE LOCACIÓN DE SERVICIOS DE SOFTWARE
+
+
+Entre EL CLIENTE, cuyos datos se detallan en el Anexo I, y LOS PRESTADORES, equipo conformado por siete (7) desarrolladores cuyos datos constan en el Anexo II, se celebra el presente Contrato de Locación de Servicios de Software, sujeto a las siguientes cláusulas:
+
+1. Objeto del contrato
+El presente contrato tiene por objeto la creación, desarrollo, implementación y puesta en funcionamiento de un software conforme a las especificaciones técnicas detalladas en el Anexo III – Alcance del Proyecto.
+
+LOS PRESTADORES se comprometen a realizar el desarrollo de manera voluntaria, gratuita y sin contraprestación económica, salvo lo establecido en la cláusula 3 respecto del reintegro de gastos.
+
+2. Naturaleza gratuita del servicio
+Las partes acuerdan expresamente que:
+
+a) El desarrollo del software es totalmente gratuito.
+b) EL CLIENTE no abonará honorarios presentes ni futuros por el trabajo realizado.
+c) No existe relación laboral, comercial ni de dependencia entre EL CLIENTE y LOS PRESTADORES.
+d) El único pago a cargo del CLIENTE será el reintegro de los gastos de hosting y dominio, según lo establecido en la cláusula siguiente.
+
+El reintegro de gastos no constituye honorario, pago por servicios ni contraprestación económica.
+
+3. Reintegro de hosting y dominio
+LOS PRESTADORES podrán contratar a su nombre los servicios de hosting y dominio necesarios para el funcionamiento del software.
+
+EL CLIENTE se obliga a reintegrar el costo exacto de dichos servicios dentro de los cinco (5) días hábiles de recibido el comprobante correspondiente.
+
+El reintegro será por el monto neto, sin recargos, comisiones ni adicionales.
+
+4. Propiedad intelectual
+Todo el software desarrollado, incluyendo pero no limitado a:
+
+Código fuente
+
+Arquitectura
+
+Base de datos
+
+Diseño
+
+Lógica de funcionamiento
+
+Documentación técnica
+
+Manuales internos
+
+Scripts, librerías o módulos creados por LOS PRESTADORES
+
+es y seguirá siendo propiedad exclusiva de LOS PRESTADORES.
+
+EL CLIENTE recibe únicamente una licencia de uso no exclusiva, no transferible y limitada al funcionamiento del sistema para su actividad interna.
+
+En ningún caso se transfiere la propiedad intelectual.
+
+5. Prohibiciones del Cliente
+EL CLIENTE no podrá, sin autorización expresa y por escrito de LOS PRESTADORES:
+
+a) Acceder al código fuente.
+b) Modificar, alterar, descompilar o intervenir el software.
+c) Copiar, reproducir o distribuir el sistema.
+d) Revender, sublicenciar o comercializar el software.
+e) Contratar a terceros para modificarlo o intervenirlo.
+
+El incumplimiento de esta cláusula habilitará a LOS PRESTADORES a suspender el servicio y revocar la licencia de uso.
+
+6. Entregables
+LOS PRESTADORES entregarán:
+
+El software funcionando en el hosting contratado.
+
+Accesos administrativos y de usuario.
+
+Manual básico de uso.
+
+Capacitación mínima para el uso inicial.
+
+No se entregará el código fuente ni repositorios.
+
+7. Plazos de ejecución
+El proyecto se desarrollará dentro del plazo estimado en el Anexo III, pudiendo extenderse por:
+
+Razones técnicas justificadas.
+
+Demoras atribuibles al CLIENTE.
+
+Cambios solicitados por EL CLIENTE.
+
+LOS PRESTADORES no garantizan fechas estrictas de entrega debido a la naturaleza gratuita del servicio.
+
+8. Soporte y garantía
+LOS PRESTADORES brindarán 30 días de soporte básico, contados desde la entrega del sistema.
+
+El soporte incluye:
+
+Corrección de errores propios del desarrollo.
+
+Ajustes menores.
+
+Asistencia técnica inicial.
+
+No incluye:
+
+Nuevas funcionalidades.
+
+Rediseños.
+
+Cambios estructurales.
+
+Mantenimiento permanente.
+
+Cualquier trabajo adicional será evaluado y podrá o no realizarse, sin obligación alguna.
+
+9. Responsabilidad
+LOS PRESTADORES actúan como un equipo de trabajo, asumiendo responsabilidad solidaria frente al CLIENTE.
+
+No serán responsables por:
+
+Fallas del proveedor de hosting o dominio.
+
+Errores derivados del uso indebido del sistema.
+
+Modificaciones no autorizadas.
+
+Problemas causados por terceros.
+
+Caídas del servicio ajenas al desarrollo.
+
+10. Confidencialidad
+Ambas partes se obligan a mantener en estricta reserva toda información técnica, operativa, comercial o sensible a la que accedan durante el proyecto.
+
+Esta obligación se mantiene por cinco (5) años posteriores a la finalización del servicio.
+
+11. Rescisión
+Cualquiera de las partes podrá rescindir el contrato con 15 días de preaviso.
+
+En caso de rescisión:
+
+EL CLIENTE deberá reintegrar los gastos de hosting/dominio ya contratados.
+
+LOS PRESTADORES no estarán obligados a entregar el código fuente.
+
+EL CLIENTE perderá la licencia de uso del software si la rescisión es por incumplimiento de su parte.
+
+12. Jurisdicción
+Para cualquier controversia, las partes se someten a los tribunales ordinarios de [Ciudad/Provincia], renunciando a cualquier otro fuero.
+
+13. Firmas
+En prueba de conformidad, se firman dos ejemplares de un mismo tenor y a un solo efecto.
+
+EL CLIENTE: ___________________________
+
+LOS PRESTADORES:
+
+Fecha: ___ / ___ / 20__
+
+ANEXO I – Datos del Cliente
+(Nombre, DNI/CUIT, domicilio, email, teléfono)
+
+ANEXO II – Datos de los 7 Prestadores
+(Nombre, DNI/CUIT, domicilio, email, teléfono de cada uno)
+
+ANEXO III – Alcance del Proyecto
+(Descripción del software, funcionalidades, módulos, plazos, entregables)
+
+Si querés, puedo hacer:
+
+una versión más formal,
+
+una versión más corta,
+
+una versión más técnica,
+
+o una versión con anexos ya redactados.
+
+Decime cuál estilo preferís y lo ajusto.
+
+podrias hacerlo el modelo pero bien escrito como si fueces un escribano
+Perfecto, ALEX.
+A continuación te presento un modelo de contrato redactado con estilo de escribano, con lenguaje jurídico formal, preciso, ordenado y completamente profesional.
+Este modelo está pensado para 7 prestadores, servicio gratuito, reintegro de hosting/dominio, propiedad intelectual protegida, sin entrega de código fuente, sin derecho a modificar ni comercializar, y soporte básico de 30 días.
+
+Podés usarlo tal cual o completarlo con los datos reales.
+
+**CONTRATO DE LOCACIÓN DE SERVICIOS DE SOFTWARE
+(SERVICIO GRATUITO – EQUIPO DE SIETE PRESTADORES)**
+
+En la ciudad de ______________________, a los ____ días del mes de __________ del año ________, entre EL CLIENTE, cuyos datos se consignan en el Anexo I, y LOS PRESTADORES, equipo conformado por siete (7) desarrolladores cuyos datos se detallan en el Anexo II, se celebra el presente Contrato de Locación de Servicios de Software, el cual se regirá por las siguientes cláusulas:
+
+PRIMERA: OBJETO
+Por el presente, LOS PRESTADORES se obligan a desarrollar, implementar y poner en funcionamiento un software conforme a las especificaciones técnicas descriptas en el Anexo III – Alcance del Proyecto, que forma parte integrante del presente instrumento.
+
+El servicio será prestado de manera voluntaria, gratuita y sin contraprestación económica, con excepción del reintegro de gastos previsto en la cláusula tercera.
+
+SEGUNDA: NATURALEZA GRATUITA DEL SERVICIO
+Las partes dejan expresa constancia de que:
+
+El desarrollo del software es totalmente gratuito.
+
+EL CLIENTE no abonará honorarios presentes ni futuros por el trabajo realizado.
+
+No existe relación laboral, societaria, de dependencia ni vínculo económico alguno entre EL CLIENTE y LOS PRESTADORES.
+
+El único pago a cargo del CLIENTE será el reintegro de los gastos de hosting y dominio, conforme a lo estipulado en la cláusula siguiente.
+
+El reintegro de gastos no constituye pago por servicios, honorarios ni contraprestación económica.
+
+TERCERA: REINTEGRO DE GASTOS
+LOS PRESTADORES podrán contratar a su nombre los servicios de hosting y dominio necesarios para el funcionamiento del software.
+
+EL CLIENTE se obliga a reintegrar el costo exacto de dichos servicios dentro de los cinco (5) días hábiles de recibido el comprobante correspondiente, sin recargos, intereses ni adicionales.
+
+CUARTA: PROPIEDAD INTELECTUAL
+Toda creación realizada en el marco del presente contrato, incluyendo pero no limitada a:
+
+Código fuente
+
+Arquitectura del sistema
+
+Base de datos
+
+Diseño, interfaces y componentes visuales
+
+Documentación técnica
+
+Scripts, librerías y módulos desarrollados
+
+será y permanecerá como propiedad exclusiva de LOS PRESTADORES.
+
+EL CLIENTE recibe únicamente una licencia de uso limitada, no exclusiva, no transferible y revocable, destinada exclusivamente al funcionamiento interno del sistema.
+
+En ningún caso se transfiere la propiedad intelectual.
+
+QUINTA: PROHIBICIONES
+EL CLIENTE se compromete a no realizar, sin autorización expresa y por escrito de LOS PRESTADORES, las siguientes acciones:
+
+a) Acceder, copiar o solicitar el código fuente.
+b) Modificar, alterar, descompilar o intervenir el software.
+c) Reproducir, distribuir o copiar total o parcialmente el sistema.
+d) Revender, sublicenciar o comercializar el software.
+e) Contratar a terceros para modificarlo o intervenirlo.
+
+El incumplimiento de esta cláusula facultará a LOS PRESTADORES a revocar la licencia de uso y suspender el servicio.
+
+SEXTA: ENTREGABLES
+LOS PRESTADORES entregarán:
+
+El software funcionando en el hosting contratado.
+
+Accesos administrativos y de usuario.
+
+Manual básico de uso.
+
+Capacitación mínima para el uso inicial.
+
+No se entregará el código fuente ni repositorios.
+
+SÉPTIMA: PLAZOS
+El desarrollo se ejecutará dentro del plazo estimado en el Anexo III, pudiendo extenderse por:
+
+Razones técnicas justificadas.
+
+Demoras atribuibles al CLIENTE.
+
+Solicitudes de cambios o ampliaciones.
+
+Dado el carácter gratuito del servicio, LOS PRESTADORES no garantizan fechas estrictas de entrega.
+
+OCTAVA: SOPORTE Y GARANTÍA
+LOS PRESTADORES brindarán treinta (30) días de soporte básico, contados desde la entrega del sistema.
+
+El soporte incluye:
+
+Corrección de errores propios del desarrollo.
+
+Ajustes menores.
+
+Asistencia técnica inicial.
+
+No incluye:
+
+Nuevas funcionalidades.
+
+Cambios estructurales.
+
+Mantenimiento permanente.
+
+Rediseños o ampliaciones.
+
+Cualquier trabajo adicional será evaluado y podrá o no realizarse, sin obligación alguna.
+
+NOVENA: RESPONSABILIDAD
+LOS PRESTADORES actúan como un equipo de trabajo, asumiendo responsabilidad solidaria frente al CLIENTE.
+
+No serán responsables por:
+
+Fallas del proveedor de hosting o dominio.
+
+Errores derivados del uso indebido del sistema.
+
+Modificaciones no autorizadas.
+
+Intervenciones de terceros.
+
+Caídas del servicio ajenas al desarrollo.
+
+DÉCIMA: CONFIDENCIALIDAD
+Ambas partes se obligan a mantener en estricta reserva toda información técnica, operativa, comercial o sensible a la que accedan durante la ejecución del proyecto.
+
+Esta obligación se mantendrá vigente por cinco (5) años posteriores a la finalización del servicio.
+
+DÉCIMO PRIMERA: RESCISIÓN
+Cualquiera de las partes podrá rescindir el presente contrato con quince (15) días de preaviso.
+
+En caso de rescisión:
+
+EL CLIENTE deberá reintegrar los gastos de hosting/dominio ya contratados.
+
+LOS PRESTADORES no estarán obligados a entregar el código fuente.
+
+La licencia de uso podrá ser revocada si la rescisión se produce por incumplimiento del CLIENTE.
+
+DÉCIMO SEGUNDA: JURISDICCIÓN
+Para cualquier controversia derivada del presente contrato, las partes se someten a la jurisdicción de los tribunales ordinarios de la ciudad de ________________________, renunciando a cualquier otro fuero o jurisdicción.
+
+DÉCIMO TERCERA: ACEPTACIÓN Y FIRMAS
+Leído que fue el presente contrato, las partes lo firman en dos (2) ejemplares de un mismo tenor y a un solo efecto.
+
+EL CLIENTE: _______________________________________
+
+LOS PRESTADORES:
+
+Fecha: ____ / ____ / ______
+
+ANEXO I – Datos del Cliente
+(Nombre, DNI/CUIT, domicilio, email, teléfono)
+
+ANEXO II – Datos de los Siete Prestadores
+(Nombre, DNI/CUIT, domicilio, email, teléfono de cada uno)
+
+ANEXO III – Alcance del Proyecto
+(Descripción del software, funcionalidades, módulos, plazos, entregables)
