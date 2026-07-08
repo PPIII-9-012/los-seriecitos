@@ -2,9 +2,70 @@
 
 Este documento detalla cronológicamente todos los cambios realizados en el sitio web de **Voladuras San Luis S.R.L.** (Procesamiento y Molienda de Minerales no Metalíferos) durante la sesión actual de desarrollo.
 
+## [v1.6.0] — 2026-07-08 (Sesión Actual)
+
+### 👣 Rediseño Profesional y Responsivo del Footer
+* **Estructura Depurada de 2 Columnas:**
+  * Se rediseñó el footer en [index.html](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/index.html) a una distribución de 2 columnas limpias.
+  * **Columna de Marca:** Contiene el logo textual con realce dorado de marca y un botón dinámico de **"Más información"** enlazado con la vista `?view=nosotros` usando el enrutamiento SPA (sin recargas de página).
+  * **Columna de Contacto B2B:** Concentra la información de contacto clave de la planta de Villa de Praga: dirección enlazada a Google Maps, número enlazado a chat de WhatsApp e email de consultas y ventas con enlaces `mailto:`.
+* **Diseño Adaptable y Estilización:**
+  * Se implementó CSS Grid en [style.css](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/style.css) para el posicionamiento y la adaptabilidad responsiva (pasa a 1 columna vertical en pantallas de móviles y tabletas).
+  * Se configuraron efectos hover y transiciones fluidas de color y transformaciones para los enlaces interactivos.
+  * Se utilizaron variables del Design System para asegurar que los elementos cambien y se adapten automáticamente entre temas claro y oscuro.
+
+### 💎 Rediseño Compacto y Unificación de Yacimientos
+* **Unificación del Catálogo:**
+  * Se unificaron las secciones de *"Yacimientos Propios"* y *"Capacidad de Procesamiento"* en una única grilla continua en [app.js](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/app.js).
+  * Se removieron las descripciones largas de las tarjetas en la vista principal para eliminar la fatiga visual, conservando la información técnica detallada para la ficha individual.
+* **Tarjeta Especial de Cierre ("¿Busca otro mineral?"):**
+  * Se incorporó una tarjeta de cierre interactiva con el botón **`CONTACTAR →`** para consultas de molienda o prospección a medida.
+  * Se configuró para expandirse y ocupar **2 columnas en pantallas de escritorio**, rellenando de forma simétrica el espacio vacío en el diseño de 3 columnas.
+  * Se estilizó con un borde dashed gris-azul (`var(--border-strong)`) y signo de pregunta (`?`) gris que transicionan suavemente a dorado (`var(--gold)`) únicamente en estado hover.
+  * Se desactivó explícitamente la justificación del texto descriptivo interno mediante alineación centrada.
+* **Hover Profesional y Sutil:**
+  * Se reemplazó el borde dorado brillante del hover de tarjetas por un tono gris-azul sobrio (`var(--border-strong)`) para mantener un perfil corporativo serio.
+  * Se eliminó el fondo dorado en hover y se ajustó a una opacidad blanca imperceptible (`rgba(255, 255, 255, 0.02)`).
+* **Simplificación de Textos de Cabecera:**
+  * Se redujo el texto de presentación de la sección en [app.js](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/app.js) a un único párrafo directo y conciso de 3 líneas.
+* **Actualización de Kickers:**
+  * Se cambió la etiqueta de los minerales procesados a maquila de `Molienda & Logística` a `Otros Yacimientos`.
+
 ---
 
-## [v1.3.0] — 2026-06-07 (Sesión Actual)
+## [v1.5.0] — 2026-07-08
+
+### 🛠️ Redefinición de Servicios y Eliminación de Proyectos Históricos
+* **Actualización de Servicios:**
+  * Se redefinieron los servicios principales en la pestaña correspondiente a: **Molienda de Minerales** (con `assets/planta-molienda.jpg`), **Trituración de Minerales** (con `assets/naves-trituracion.jpg`) y **Servicios de Fletes** (con `assets/operacion-cargadora.jpg`).
+  * Se redactaron descripciones B2B cortas, simples y claras enfocadas en la capacidad operativa de la planta y flota.
+  * Se actualizó el subtítulo de la sección por un enfoque específico en molienda analítica, trituración y fletes B2B.
+* **Eliminación Completa de la Línea de Tiempo:**
+  * Se removió por completo la sección *"Nuestra Historia de Proyectos"* (línea de tiempo de proyectos históricos) del código y de todas las páginas del sitio para resguardar de forma estricta la confidencialidad de la cartera de clientes.
+
+---
+
+## [v1.4.0] — 2026-07-08
+
+### 📱 Ajustes de Layout, Justificación y Rediseño de WhatsApp
+* **Rediseño del Botón de WhatsApp:**
+  * Se reubicó al extremo inferior izquierdo (`left: 24px; bottom: 24px` en escritorio y `left: 16px; bottom: 16px` en móviles).
+  * Se convirtió en un botón flotante circular y compacto de `52px` (`48px` en móviles) ocultando el texto `"WhatsApp"`.
+  * Se añadieron micro-animaciones interactivas de zoom y sombra resplandeciente en hover.
+* **Corrección de Ancho en Mallas y Calidad:**
+  * Se ajustaron los apartados de **Mallas** y **Calidad** en [app.js](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/app.js) envolviéndolos con `<section class="section-view">`. Ahora cuentan con el mismo ancho máximo (`1200px`) y márgenes simétricos que el resto de las vistas.
+* **Alineación de Textos (Justificación):**
+  * Se aplicó la alineación justificada (`text-align: justify;`) a todos los párrafos de texto largo en [style.css](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/style.css) para mejorar la estética y orden editorial.
+  * Se definieron excepciones en CSS para ignorar la justificación en títulos, héroes, pies de página, pies de foto muy cortos y badges.
+  * Se configuró un reset a alineación izquierda en pantallas de móviles pequeños (`< 576px`) para evitar espacios desiguales entre palabras.
+* **Integración y Estilo de Mapas Interactivos:**
+  * Se agregaron minimapas interactivos de Google Maps de la planta de Villa de Praga en el footer de Inicio y en la columna de Contacto.
+  * Se envolvieron en un componente de tarjeta (`.map-card`) con una barra inferior que muestra la dirección física e incluye un enlace directo para abrir en la app de Google Maps.
+  * Se aplicó un filtro CSS dinámico de inversión en modo oscuro (`filter: invert(90%)`) que transiciona suavemente a estado normal cuando el usuario cambia al tema claro.
+
+---
+
+## [v1.3.0] — 2026-06-07
 
 ### 🚀 Mejoras Visuales de Interacción
 * **Pulsación de Botón "Ver detalles":** Se cambió el texto del CTA en todas las tarjetas de mineral de `"Ver ficha técnica →"` a `"Ver detalles →"` para un diseño más limpio y directo.
