@@ -360,6 +360,7 @@ function renderHome(container) {
       <section class="stats-section">
         <div class="stats-grid">
           <div class="stat-card">
+            <div class="icon"><img src="assets/icon-experiencia.svg" alt="Experiencia"></div>
             <span class="stat-kicker">Experiencia</span>
             <div class="number-row">
               <span class="number" data-count="40">40</span><span class="suffix">+</span>
@@ -367,6 +368,7 @@ function renderHome(container) {
             <div class="label">Años de Trayectoria</div>
           </div>
           <div class="stat-card">
+            <div class="icon"><img src="assets/icon-mineria.svg" alt="Perforación"></div>
             <span class="stat-kicker">Perforación</span>
             <div class="number-row">
               <span class="number" data-count="10">10</span><span class="suffix">+</span>
@@ -374,6 +376,7 @@ function renderHome(container) {
             <div class="label">Perforadoras Activas</div>
           </div>
           <div class="stat-card">
+            <div class="icon"><img src="assets/icon-ingenieria.svg" alt="Vehículos"></div>
             <span class="stat-kicker">Vehículos</span>
             <div class="number-row">
               <span class="number" data-count="12">12</span>
@@ -381,6 +384,7 @@ function renderHome(container) {
             <div class="label">Vehículos en Flota</div>
           </div>
           <div class="stat-card">
+            <div class="icon"><img src="assets/icon-experiencia.svg" alt="Clientes"></div>
             <span class="stat-kicker">Clientes</span>
             <div class="number-row">
               <span class="number" data-count="5">5</span><span class="suffix">+</span>
@@ -1097,7 +1101,7 @@ function renderCalidad(container) {
             <span class="view-kicker">Laboratorio Analítico · Villa de Praga</span>
             <h1>Control y Garantía de <span>Calidad</span></h1>
             <p>
-              Garantizamos la pureza extrema de nuestros minerales industriales mediante rigurosos controles analíticos de blancura técnica y cuantificación elemental.
+              Pureza garantizada mediante rigurosos controles de blancura técnica y cuantificación elemental.
             </p>
           </div>
 
@@ -1107,7 +1111,7 @@ function renderCalidad(container) {
                 <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                 </svg>
-                Garantías y Parámetros
+                Parámetros
               </button>
               <button class="tab-btn" data-target="tab-laboratorio" role="tab" aria-selected="false" onclick="switchQualityTab(this)">
                 <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1115,7 +1119,7 @@ function renderCalidad(container) {
                   <path d="M8.5 2h7"/>
                   <path d="M7 16h10"/>
                 </svg>
-                Servicios de Laboratorio
+                Laboratorio
               </button>
               <button class="tab-btn" data-target="tab-trazabilidad" role="tab" aria-selected="false" onclick="switchQualityTab(this)">
                 <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1123,16 +1127,16 @@ function renderCalidad(container) {
                   <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
                   <line x1="12" y1="22.08" x2="12" y2="12"/>
                 </svg>
-                Trazabilidad y Tecnología
+                Trazabilidad
               </button>
             </div>
 
             <div class="quality-tab-content active" id="tab-garantias" role="tabpanel">
               <div class="tab-split">
                 <div class="tab-text">
-                  <h3>Especificaciones Técnicas Garantizadas</h3>
+                  <h3>Especificaciones Garantizadas</h3>
                   <p>
-                    Nuestros procesos de purificación magnética de alta intensidad eliminan contaminantes ferrosos para cumplir con las exigencias críticas de la industria cerámica y del vidrio de alta blancura.
+                    Purificación magnética de alta intensidad para eliminar contaminantes ferrosos y asegurar máxima blancura.
                   </p>
                   <div class="highlight-spec-box">
                     <div class="hsb-item">
@@ -1158,20 +1162,20 @@ function renderCalidad(container) {
                 <div class="tab-text">
                   <h3>Laboratorio en Planta</h3>
                   <p>
-                    Contamos con instalaciones de laboratorio totalmente equipadas para realizar análisis físicos y químicos continuos de cada lote. Brindamos servicios especializados de:
+                    Instalaciones equipadas para el análisis físico-químico continuo de cada lote de producción:
                   </p>
                   <ul class="quality-features-list">
                     <li>
                       <strong>Análisis Granulométrico:</strong>
-                      <span>Medición de la distribución del tamaño de partícula mediante tamizado húmedo y seco Tyler para asegurar consistencia granulométrica.</span>
+                      <span>Determinación precisa mediante tamizado Tyler húmedo y seco.</span>
                     </li>
                     <li>
                       <strong>Conductividad Eléctrica:</strong>
-                      <span>Determinación de la conductividad iónica en solución para comprobar el nivel de sales y pureza del mineral.</span>
+                      <span>Medición en solución para comprobar la pureza y nivel de sales del mineral.</span>
                     </li>
                     <li>
                       <strong>Muestras Industriales:</strong>
-                      <span>Preparación y despacho de muestras piloto específicas para pruebas industriales y validación directa en planta del cliente.</span>
+                      <span>Preparación y despacho de lotes piloto para validación en planta del cliente.</span>
                     </li>
                   </ul>
                 </div>
@@ -1185,9 +1189,9 @@ function renderCalidad(container) {
             <div class="quality-tab-content" id="tab-trazabilidad" role="tabpanel">
               <div class="tab-split-vertical">
                 <div class="tab-intro-text">
-                  <h3>Trazabilidad Total y Tecnología Analítica</h3>
+                  <h3>Trazabilidad y Tecnología</h3>
                   <p>
-                    Garantizamos un control estricto desde el frente de extracción hasta la entrega final B2B del producto embolsado o a granel.
+                    Control riguroso desde el frente de cantera hasta la entrega final B2B del mineral.
                   </p>
                 </div>
                 <div class="quality-grid-wrapper">

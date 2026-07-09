@@ -4,28 +4,51 @@ Este documento detalla cronológicamente todos los cambios realizados en el siti
 
 ## [v1.6.0] — 2026-07-08 / 2026-07-09 (Sesión Actual)
 
+### 🔬 Rediseño Interactivo, Simplificación y Optimización Responsiva de la Sección Calidad
+* **Estructura Interactiva por Pestañas (Tabs):**
+  - Rediseñamos por completo la sección en [app.js](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/app.js) y organizamos la información en 3 pestañas principales: **Parámetros** (especificaciones técnicas), **Laboratorio** (capacidades analíticas en planta) y **Trazabilidad** (seguimiento de lotes).
+  - Sustituimos todos los emojis por iconos SVG vectoriales inline de precisión en [app.js](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/app.js), asignándoles estilos responsivos en [style.css](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/style.css) que se adaptan automáticamente a la paleta de colores del tema.
+* **Consolidación de Métricas y Gráfico Comparativo de Fe₂O₃:**
+  - Se eliminó el bloque redundante `cert-box` en la cabecera.
+  - Se achicó y se incrustó el gráfico comparativo de impurezas de óxido de hierro directamente dentro de la tarjeta del parámetro de $Fe_2O_3$ en forma de barras proporcionales compactas, ahorrando una sección completa de scroll vertical.
+* **Incorporación de Nuevos Servicios de Laboratorio:**
+  - Se detallaron los servicios analíticos para **análisis granulométrico**, **conductividad eléctrica** y **muestras industriales**.
+  - Se reemplazó el visual placeholder gris por la foto real de la planta y laboratorio `assets/laboratorio-fuera.jpg`.
+* **Optimizaciones Responsivas Mobile-First Extremas:**
+  - **Pestañas en Grid Fijo sin Scroll:** Configuramos la navegación de pestañas en móviles como un grid de 3 columnas (`repeat(3, 1fr)`) y apilamos verticalmente los iconos sobre el texto (`flex-direction: column`). Esto elimina por completo el desbordamiento y scroll horizontal de las pestañas en pantallas estrechas.
+  - **Ocultamiento de Contenido Duplicado:** Ocultamos en móviles el bloque `.highlight-spec-box` que repetía las métricas de Hierro y Blancura para prevenir la fatiga visual.
+  - **Preclusión de Desplazamiento Vertical Fantasma:** Agregamos `overflow-y: hidden;` en `.quality-tabs-nav` a nivel global y en la media query móvil. Esto previene que los navegadores móviles muestren barras de scroll vertical redundantes en los títulos de pestañas.
+  - **Reducción del Volumen de Texto y Spacing:** Redactamos explicaciones y descripciones sumamente breves y directas, redujimos el tamaño de fuentes, paddings de tarjetas y el alto de la imagen principal en móvil.
+
 ### 🌾 Rediseño Compacto y Profesional de Sección Mallas
 * **Sidebar Compacta y Fija:**
   * Se configuró la barra lateral de mallas en [style.css](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/style.css) a un ancho fijo de `180px` para evitar variaciones de tamaño.
   * Se eliminaron los micrones (`.mb-size`) de los botones de selección en [app.js](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/app.js) para lograr un listado mucho más limpio y uniforme (ej. `#400`, `#325`, etc.).
   * El botón activo se resalta mediante un elegante borde izquierdo dorado de precisión (`border-left: 3px solid var(--gold);`) y un fondo oscuro integrado (`var(--bg-deep)`).
 * **Marco Protector de Contenido (No Flotante):**
-  * Se dotó a la sección de detalles `.mallas-detail` en [style.css](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/style.css) de un marco con fondo gris oscuro (`var(--bg-alt)`) y un borde fino de 1px (`var(--border-strong)`) con un padding de `32px` (`20px` en móviles). Esto enmarca la información técnica y evita que los elementos se sientan flotando en el vacío del fondo.
+  * Se dotó a la sección de detalles `.mallas-detail` en [style.css](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/style.css) de un marco con fondo gris oscuro (`var(--bg-alt)`) y un borde de 1px (`var(--border-strong)`) con un padding de `32px` (`20px` en móviles). Esto enmarca la información técnica de la malla elegida y evita que los elementos se sientan flotando en el vacío del fondo.
   * Se configuró el fondo de las tarjetas de aplicación `.malla-industry-card` y los chips `.malla-badge` al tono oscuro profundo (`var(--bg-deep)`) para asegurar una correcta relación de contraste y profundidad visual.
 * **Detalles Reestructurados en 2 Columnas:**
-  * Se modificó el panel de información en [app.js](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/app.js) y se dividió en una grilla responsiva de dos columnas (aplicaciones B2B a la izquierda en tarjetas y minerales disponibles a la derecha como chips independientes).
+  * Se modificó el panel de información en [app.js](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/app.js) y se dividió en una grilla de dos columnas (aplicaciones B2B a la izquierda en tarjetas y minerales a la derecha como chips independientes).
   * Se compactó el tamaño de la tipografía gigante del número de malla (`.mi-num`) a `40px` de alto para optimizar el espacio vertical.
 * **Integración del Catálogo en la Nube (Google Sheets):**
-  * Se agregó un botón de acción `.malla-btn-action` al final de la barra lateral que dice **"VER TODO"** (sin emojis) y enlaza directamente al catálogo con especificaciones detalladas en Google Sheets.
-* **Adaptabilidad Móvil Responsiva:**
-  * Se añadieron overrides en la media query de [style.css](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/style.css) para que la malla activa use un borde inferior dorado (`border-bottom: 3px solid var(--gold);`) en lugar de izquierdo, y el botón "Ver todo" se muestre ordenadamente como una pestaña horizontal deslizable.
+  * Se vinculó el botón de acción `.malla-btn-action` al final de la barra lateral directamente a la hoja de cálculo en la nube (`https://docs.google.com/spreadsheets/d/1juUnuY_5T-_FnfxprSMYXW5rkKroizDF2ktayy2oJR8/edit?usp=sharing`) abriéndose en pestaña nueva. Se removió por completo el emoji `📊` del botón dejando solo el texto tipográfico limpio **"VER TODO"**.
+* **Correcciones Críticas de Adaptabilidad Móvil (Responsive):**
+  * **Grilla Autoadaptable (Sin Scroll):** Se configuró `.mallas-tabs-container` en móviles con `flex-wrap: wrap` y `gap: 8px` para distribuir los 8 selectores en una grilla compacta de 2 filas de 4 botones. Esto elimina los scrolls horizontales/verticales por completo y muestra todas las mallas a primera vista sin recortes de texto.
+  * **Dimensiones de Botones Homogéneas:** Ajustamos `.malla-btn` y `.malla-btn-action` a `flex: 1 0 calc(25% - 8px)` y `width: auto` en móviles para garantizar que los chips de selección sean simétricos y del mismo tamaño.
+  * **Apilado de Cabecera:** Se configuró `.malla-detail-header` para colapsar en `flex-direction: column` en móviles. Esto soluciona la salida por la derecha del texto descriptivo de micrones largo que causaba desbordamiento y scroll horizontal en toda la página.
+  * **Apilado de Grilla de Detalles:** Se configuró `.malla-detail-grid` para colapsar a `grid-template-columns: 1fr` en pantallas pequeñas, alineando las aplicaciones y los minerales de forma legible.
 
 ### 🏠 Rediseño Integral de la Página Principal (Inicio)
+* **Optimización de Visibilidad en Menú y Navegación Header:**
+  * **Desktop (Header Links):** Se incrementó el tamaño de fuente a `12px` y el grosor a `700` (bold) en [style.css](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/style.css). Se modificó el color por defecto a un blanco de alto contraste (`rgba(255,255,255,0.85)`) y el estado activo/hover destaca ahora en color dorado (`var(--gold)`) con fondo atenuado, haciéndolo sumamente obvio y profesional.
+  * **Móvil (Botón Hamburguesa & Menú Lateral):** Se añadió la etiqueta de texto `"Menú"` al lado del icono de tres líneas en [index.html](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/index.html). Se le dotó de un estilo tipo insignia Call-to-Action con borde de `1.5px` color oro satinado y fondo translúcido dorado en [style.css](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/style.css). Asimismo, **se rediseñó el menú lateral (drawer)** eliminando los bordes y cajas rígidas anticuadas por un estilo borderless más fluido y limpio. La opción activa se destaca ahora con una sutil barra izquierda dorada (`border-left: 3px solid var(--gold)`) y fondo tintado, adaptándose además con reglas de alto contraste en el modo claro.
 * **Animación de Scroll en el Hero:**
   * Se añadió un movimiento sutil de resorte vertical (`scroll-bounce`) en el indicador de scroll para invitar a la navegación hacia abajo en [style.css](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/style.css).
-* **Métricas de Estadísticas de Alta Densidad:**
-  * Se compactó la sección de estadísticas en [app.js](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/app.js) removiendo los iconos ilustrativos.
-  * Se añadieron etiquetas doradas (`.stat-kicker`) y se redujo el relleno general de las tarjetas a `24px 20px` en [style.css](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/style.css) para una presentación sobria y moderna.
+* **Métricas de Estadísticas de Alta Densidad y Responsive 2 Columnas:**
+  * Se compactó la sección de estadísticas en [app.js](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/app.js) y se restauraron los iconos SVG originales en un tamaño reducido de `32px` para mayor elegancia.
+  * Se añadieron etiquetas doradas (`.stat-kicker`) y se redujo el relleno general de las tarjetas a `24px 20px` en [style.css](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/style.css).
+  * **Exención de colapso vertical:** Se modificó la regla responsiva para pantallas móviles en [style.css](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/style.css) para mantener la grilla de estadísticas en **2 columnas** (`1fr 1fr`), evitando un listado vertical largo e incómodo.
 * **Galería Fotográfica de Cantera y Planta:**
   * Se modificó el título a *"Galería Fotográfica de Cantera y Planta"* y se eliminó la etiqueta superior redundante.
   * Se optimizó la galería para mostrar inicialmente solo **3 fotos destacadas** de operación, ocultando las **17 fotos restantes** del total de 20 recursos de `assets/`.
@@ -50,10 +73,10 @@ Este documento detalla cronológicamente todos los cambios realizados en el siti
   * Se rediseñó el footer en [index.html](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/index.html) a una distribución de 2 columnas limpias.
   * **Columna de Marca:** Contiene el logo textual con realce dorado de marca y un botón dinámico de **"Más información"** enlazado con la vista `?view=nosotros` usando el enrutamiento SPA (sin recargas de página).
   * **Columna de Contacto B2B:** Concentra la información de contacto clave de la planta de Villa de Praga: dirección enlazada a Google Maps, número enlazado a chat de WhatsApp e email de consultas y ventas con enlaces `mailto:`.
-* **Diseño Adaptable y Estilización:**
+* **Diseño Adaptable, Estilización y Responsive Compacto:**
   * Se implementó CSS Grid en [style.css](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/style.css) para el posicionamiento y la adaptabilidad responsiva (pasa a 1 columna vertical en pantallas de móviles y tabletas).
-  * Se configuraron efectos hover y transiciones fluidas de color y transformaciones para los enlaces interactivos.
-  * Se utilizaron variables del Design System para asegurar que los elementos cambien y se adapten automáticamente entre temas claro y oscuro.
+  * Se configuraron efectos hover y transiciones fluidas.
+  * **Optimización de tamaño en móviles:** Se programaron overrides en la media query móvil para reducir la densidad del footer: achicando paddings a `24px 16px`, disminuyendo el tamaño de la fuente de los textos y el copyright, y reduciendo la separación de columnas para evitar que se sienta excesivamente grande en móviles.
 
 ### 💎 Rediseño Compacto y Unificación de Yacimientos
 * **Unificación del Catálogo:**
