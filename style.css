@@ -553,6 +553,16 @@ textarea:focus-visible {
   height: 8px;
   background: var(--gold);
   border-radius: 2px;
+  animation: scroll-bounce 1.6s infinite ease-in-out;
+}
+
+@keyframes scroll-bounce {
+  0%, 100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 6px);
+  }
 }
 
 /* --- Stats Grid ------------------------------------------- */
@@ -572,7 +582,7 @@ textarea:focus-visible {
 
 .stat-card {
   background: var(--bg-main);
-  padding: 48px 32px;
+  padding: 24px 20px;
   text-align: center;
   border: 1px solid transparent;
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
@@ -585,15 +595,14 @@ textarea:focus-visible {
   transform: translateY(-2px);
 }
 
-.stat-card .icon {
-  height: 48px;
-  margin-bottom: 16px;
-  opacity: 0.7;
-}
-
-.stat-card .icon img {
-  height: 100%;
-  filter: var(--icon-filter);
+.stat-kicker {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
 }
 
 .stat-card .number-row {
@@ -2588,12 +2597,46 @@ body.light-theme .theme-toggle-btn .icon-moon {
   }
 }
 
+/* Compact grid for location map section */
+.compact-plant-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.plant-info-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.gallery-toggle-container {
+  text-align: center;
+  margin-top: 32px;
+}
+
+@media (max-width: 900px) {
+  .compact-plant-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  .compact-plant-grid .map-card {
+    height: 250px !important;
+  }
+}
+
 /* ============================================================
-   REDUCED MOTION (Enforced)
+   REDUCED MOTION (Standard Compliance)
    ============================================================ */
-*,
-*::before,
-*::after {
-  animation: none !important;
-  transition: none !important;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }

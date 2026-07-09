@@ -4,6 +4,21 @@ Este documento detalla cronológicamente todos los cambios realizados en el siti
 
 ## [v1.6.0] — 2026-07-08 (Sesión Actual)
 
+### 🏠 Rediseño Integral de la Página Principal (Inicio)
+* **Animación de Scroll en el Hero:**
+  * Se añadió un movimiento sutil de resorte vertical (`scroll-bounce`) en el indicador de scroll para invitar a la navegación hacia abajo en [style.css](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/style.css).
+* **Métricas de Estadísticas de Alta Densidad:**
+  * Se compactó la sección de estadísticas en [app.js](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/app.js) removiendo los iconos ilustrativos.
+  * Se añadieron etiquetas doradas (`.stat-kicker`) y se redujo el relleno general de las tarjetas a `24px 20px` en [style.css](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/style.css) para una presentación sobria y moderna.
+* **Galería Fotográfica de Cantera y Planta:**
+  * Se modificó el título a *"Galería Fotográfica de Cantera y Planta"* y se eliminó la etiqueta superior redundante.
+  * Se optimizó la galería para mostrar inicialmente solo **3 fotos destacadas** de operación, ocultando las **17 fotos restantes** del total de 20 recursos de `assets/`.
+  * Se incorporó el botón dinámico **"Ver todas las fotos"** para expandir y colapsar la galería de forma instantánea.
+  * Se eliminó el bloque de imagen roto correspondiente a `laboratorio-espectrofotometro.jpg` (archivo inexistente) y se verificaron los 20 recursos restantes.
+* **Ubicación y Mapa en Dos Columnas:**
+  * Se reestructuró la sección de ubicación utilizando la grilla responsiva `.contact-grid`.
+  * Ahora los datos físicos y logísticos se organizan a la izquierda y el mapa interactivo se posiciona a la derecha con una altura optimizada de `280px` en pantallas de escritorio.
+
 ### 👣 Rediseño Profesional y Responsivo del Footer
 * **Estructura Depurada de 2 Columnas:**
   * Se rediseñó el footer en [index.html](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/index.html) a una distribución de 2 columnas limpias.

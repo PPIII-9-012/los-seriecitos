@@ -1,21 +1,12 @@
-# AG Kit files
+# Archivos y configuración de herramientas de IA
 .agents/
-**/.agents/
+skills-lock.json
 .opencode/
-**/.opencode/
-.env*
-**/.env*
 
-# OS files
+# Archivos pesados del proyecto (Multimedia y Modelos)
+proyecto_recursos/Fotos/WhatsApp Video 2026-06-17 at 12.50.26.mp4
+
+# Archivos temporales del sistema operativo
 .DS_Store
 Thumbs.db
 Desktop.ini
-
-# IDE files
-.vscode/
-.idea/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.swp

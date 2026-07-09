@@ -269,6 +269,19 @@ function initDynamicBehaviors(container) {
   tlItems.forEach(el => {
     el.classList.add('active');
   });
+
+  // Toggle para la galería de fotos expandible
+  const btnToggleGallery = container.querySelector('#btn-toggle-gallery');
+  if (btnToggleGallery) {
+    btnToggleGallery.addEventListener('click', () => {
+      const isExpanded = btnToggleGallery.classList.toggle('expanded');
+      const hiddenPhotos = container.querySelectorAll('.hidden-photo');
+      hiddenPhotos.forEach(photo => {
+        photo.style.display = isExpanded ? 'block' : 'none';
+      });
+      btnToggleGallery.textContent = isExpanded ? 'Ver menos fotos' : 'Ver todas las fotos';
+    });
+  }
 }
 
 /* ============================================================
@@ -293,8 +306,7 @@ function renderHome(container) {
             <span class="thin">40+ años de precisión en procesamiento de no metalíferos</span>
           </h1>
           <p>
-            Procesamiento analítico de feldespato, cuarzo, albita y pirofilita en granulometrías certificadas. 
-            Servicio integral de voladuras controladas para minería y obras viales de alta complejidad.
+            Procesamiento de feldespato, cuarzo, albita y pirofilita en granulometrías certificadas para minería e industria de alta complejidad.
           </p>
           <div class="hero-buttons">
             <a href="?view=servicios" onclick="event.preventDefault(); window.navigate('?view=servicios')" class="btn btn-primary">Nuestros servicios</a>
@@ -308,28 +320,28 @@ function renderHome(container) {
       <section class="stats-section">
         <div class="stats-grid">
           <div class="stat-card">
-            <div class="icon"><img src="assets/icon-experiencia.svg" alt="Experiencia"></div>
+            <span class="stat-kicker">Experiencia</span>
             <div class="number-row">
               <span class="number" data-count="40">40</span><span class="suffix">+</span>
             </div>
             <div class="label">Años de Trayectoria</div>
           </div>
           <div class="stat-card">
-            <div class="icon"><img src="assets/icon-mineria.svg" alt="Perforación"></div>
+            <span class="stat-kicker">Perforación</span>
             <div class="number-row">
               <span class="number" data-count="10">10</span><span class="suffix">+</span>
             </div>
             <div class="label">Perforadoras Activas</div>
           </div>
           <div class="stat-card">
-            <div class="icon"><img src="assets/icon-ingenieria.svg" alt="Vehículos"></div>
+            <span class="stat-kicker">Vehículos</span>
             <div class="number-row">
               <span class="number" data-count="12">12</span>
             </div>
             <div class="label">Vehículos en Flota</div>
           </div>
           <div class="stat-card">
-            <div class="icon"><img src="assets/icon-experiencia.svg" alt="Clientes"></div>
+            <span class="stat-kicker">Clientes</span>
             <div class="number-row">
               <span class="number" data-count="5">5</span><span class="suffix">+</span>
             </div>
@@ -340,67 +352,164 @@ function renderHome(container) {
 
       <!-- PROTOTYPE GALLERY GRID (MASSIVE IMAGES OPTIMIZATION) -->
       <section class="section-view">
-        <span class="view-kicker">Galería de Operación (Prototipo)</span>
         <div class="view-header">
-          <h2>Infraestructura <span>y Maquinaria en Detalle</span></h2>
-          <p>Compilación completa de imágenes del yacimiento, planta de molienda y flota pesada de extracción activa en San Luis.</p>
+          <h2>Galería Fotográfica <span>de Cantera y Planta</span></h2>
+          <p>Compilación de imágenes de la cantera, planta de molienda y flota.</p>
         </div>
         <div class="gallery-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
+          <!-- Primeras 3 fotos visibles inicialmente -->
           <div>
             <img src="assets/operacion-frente-cantera.jpeg" alt="Frente de Cantera" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Frente de Explotación</p>
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Frente de Cantera</p>
           </div>
           <div>
-            <img src="assets/perforadora-sandvik.jpeg" alt="Maquinaria de Perforación" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Pala cargadora</p>
+            <img src="assets/planta-molienda.jpg" alt="Planta de Molienda" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Planta de Molienda</p>
           </div>
           <div>
-            <img src="assets/rampa-transporte.jpeg" alt="Rampa de Acceso" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Zaranda</p>
-          </div>
-
-          <div>
-            <img src="assets/operacion-cargadora.jpg" alt="Capacidad Operativa" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Frente de Trabajo VSL</p>
-          </div>
-          <div>
-            <img src="assets/planta-molienda.jpg" alt="Molienda 01" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Planta Procesamiento</p>
+            <img src="assets/despacho-granel-silos.jpg" alt="Silos de Despacho" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Silos de Despacho B2B</p>
           </div>
 
-          <div>
-            <img src="assets/lineas-despacho-b2b.jpg" alt="Molienda 03" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Líneas de Carga B2B</p>
+          <!-- Resto de fotos ocultas por defecto -->
+          <div class="hidden-photo" style="display: none;">
+            <img src="assets/perforadora-sandvik.jpeg" alt="Perforadora Sandvik" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Perforadora Sandvik DX680</p>
           </div>
-          <div>
-            <img src="assets/instalaciones-planta.jpg" alt="Molienda 04" style="height:220px; width:100%; object-fit:cover;">
+          <div class="hidden-photo" style="display: none;">
+            <img src="assets/rampa-transporte.jpeg" alt="Rampa de Transporte" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Rampa de Transporte</p>
+          </div>
+          <div class="hidden-photo" style="display: none;">
+            <img src="assets/operacion-cargadora.jpg" alt="Pala Cargadora" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Pala Cargadora en Cantera</p>
+          </div>
+          <div class="hidden-photo" style="display: none;">
+            <img src="assets/lineas-despacho-b2b.jpg" alt="Líneas de Carga" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Líneas de Carga</p>
+          </div>
+          <div class="hidden-photo" style="display: none;">
+            <img src="assets/instalaciones-planta.jpg" alt="Instalaciones Generales" style="height:220px; width:100%; object-fit:cover;">
             <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Instalaciones Generales</p>
           </div>
-          <div>
-            <img src="assets/naves-trituracion.jpg" alt="Molienda 05" style="height:220px; width:100%; object-fit:cover;">
+          <div class="hidden-photo" style="display: none;">
+            <img src="assets/naves-trituracion.jpg" alt="Naves de Trituración" style="height:220px; width:100%; object-fit:cover;">
             <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Naves de Trituración</p>
           </div>
-          <div>
-            <img src="assets/despacho-granel-silos.jpg" alt="Molienda 06" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Despacho a Granel</p>
-          </div>
-          <div>
-            <img src="assets/operacion-nocturna.jpg" alt="Molienda 07" style="height:220px; width:100%; object-fit:cover;">
+          <div class="hidden-photo" style="display: none;">
+            <img src="assets/operacion-nocturna.jpg" alt="Operación Nocturna" style="height:220px; width:100%; object-fit:cover;">
             <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Operación Nocturna</p>
           </div>
-          <div>
-            <img src="assets/perforadora-orugas.jpg" alt="Molienda 08" style="height:220px; width:100%; object-fit:cover;">
+          <div class="hidden-photo" style="display: none;">
+            <img src="assets/perforadora-orugas.jpg" alt="Sistemas de Perforación" style="height:220px; width:100%; object-fit:cover;">
             <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Sistemas de Perforación</p>
           </div>
-          <div>
-            <img src="assets/laboratorio-espectrofotometro.jpg" alt="Molienda 09" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Controladores de Blancura</p>
-          </div>
-          <div>
-            <img src="assets/galpones-stock-lotes.jpg" alt="Molienda 10" style="height:220px; width:100%; object-fit:cover;">
-            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Stock en Galpones</p>
-          </div>
 
+          <div class="hidden-photo" style="display: none;">
+            <img src="assets/galpones-stock-lotes.jpg" alt="Stock en Galpones" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Stock por Lotes</p>
+          </div>
+          <div class="hidden-photo" style="display: none;">
+            <img src="assets/deposito-con-maquina.jpg" alt="Depósito General" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Depósito General</p>
+          </div>
+          <div class="hidden-photo" style="display: none;">
+            <img src="assets/ensayo-geologico-tecnico.jpeg" alt="Ensayo Técnico" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Ensayo Geológico Técnico</p>
+          </div>
+          <div class="hidden-photo" style="display: none;">
+            <img src="assets/flota-pesada-cargadoras.jpg" alt="Flota Pesada" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Flota Pesada de Cargadoras</p>
+          </div>
+          <div class="hidden-photo" style="display: none;">
+            <img src="assets/frente-pizarra-mineral.jpeg" alt="Frente Pizarra" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Frente Pizarra Mineral</p>
+          </div>
+          <div class="hidden-photo" style="display: none;">
+            <img src="assets/laboratorio-fuera.jpg" alt="Laboratorio Exterior" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Laboratorio de Molienda</p>
+          </div>
+          <div class="hidden-photo" style="display: none;">
+            <img src="assets/silos-clasificacion.jpg" alt="Silos de Clasificación" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Silos de Clasificación</p>
+          </div>
+          <div class="hidden-photo" style="display: none;">
+            <img src="assets/yacimiento-calizo.jpeg" alt="Yacimiento Calizo" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Yacimiento Calizo</p>
+          </div>
+          <div class="hidden-photo" style="display: none;">
+            <img src="assets/yacimiento-reservas.jpeg" alt="Reservas Explotación" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Reservas de Explotación</p>
+          </div>
+          <div class="hidden-photo" style="display: none;">
+            <img src="assets/camion-transporte.png" alt="Camión Logística B2B" style="height:220px; width:100%; object-fit:cover;">
+            <p style="font-size:11px; color:var(--text-dark); margin-top:6px; text-transform:uppercase; font-weight:700;">Logística y Transporte B2B</p>
+          </div>
+        </div>
+
+        <div class="gallery-toggle-container" style="text-align: center; margin-top: 32px;">
+          <button id="btn-toggle-gallery" class="btn btn-outline">Ver todas las fotos</button>
+        </div>
+      </section>
+
+      <!-- MAPA INTERACTIVO (UBICACIÓN PLANTA) -->
+      <section class="section-view" style="padding-top: 0; padding-bottom: 48px;">
+        <span class="view-kicker">Nuestra Ubicación</span>
+        <div class="view-header" style="margin-bottom: 32px;">
+          <h2>Planta Industrial <span>Villa de Praga</span></h2>
+        </div>
+        <div class="contact-grid">
+          <!-- Columna Izquierda: Información de Planta -->
+          <div class="plant-info-panel">
+            <p style="font-size: 15px; color: var(--text-gray); line-height: 1.7; margin-bottom: 24px;">
+              Ubicación geoestratégica de nuestra planta de molienda y procesamiento de minerales en la provincia de San Luis.
+            </p>
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+              <div style="display: flex; gap: 12px; align-items: flex-start;">
+                <svg style="color: var(--gold); flex-shrink: 0; margin-top: 2px;" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                <div>
+                  <strong style="color: var(--text-white); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Dirección Física</strong>
+                  <span style="font-size: 14px; color: var(--text-gray);">Ruta Provincial 2, Villa de Praga, San Luis, Argentina</span>
+                </div>
+              </div>
+              <div style="display: flex; gap: 12px; align-items: flex-start;">
+                <svg style="color: var(--gold); flex-shrink: 0; margin-top: 2px;" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                <div>
+                  <strong style="color: var(--text-white); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 4px;">Logística Comercial B2B</strong>
+                  <span style="font-size: 14px; color: var(--text-gray);">Acceso apto para vehículos de carga pesada y bitrenes.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Columna Derecha: Mapa Compacto -->
+          <div class="map-card" style="height: 280px;">
+            <div class="map-wrapper">
+              <iframe 
+                class="map-iframe"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3546.068367980816!2d-65.63462838494715!3d-32.547091281042714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95d36f006018ff1f%3A0xc327f033041c2057!2sMolienda%3A%20Voladuras%20San%20Luis%20SRL!5e0!3m2!1ses-419!2sar!4v1720485600000!5m2!1ses-419!2sar"
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+            <div class="map-footer-bar" style="padding: 8px 16px;">
+              <a href="https://maps.app.goo.gl/qtoToUGA3w9KLLGg7" target="_blank" rel="noopener" class="map-link-btn">
+                <span>Abrir en Google Maps</span>
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </div>
@@ -467,7 +576,7 @@ function renderServicios(container) {
         <span class="view-kicker">Especialidades Industriales</span>
         <div class="view-header">
           <h1>Nuestra <span>Especialidad</span></h1>
-          <p>Servicios integrales para la minería extractiva, construcción civil e industria manufacturera.</p>
+          <p>Molienda de alta pureza, trituración de materias primas y logística de fletes para el abastecimiento continuo de su industria.</p>
         </div>
         
         <div class="services-grid">
@@ -476,29 +585,29 @@ function renderServicios(container) {
             <div class="num">01</div>
             <h3>Molienda de Minerales</h3>
             <p>
-              Procesamiento de cuarzo de alta pureza, feldespato potásico, albita sódica y pirofilita. Molienda seca controlada para obtener granulometrías precisas desde malla #8/20 hasta malla #400 Tyler.
+              Molienda seca controlada de cuarzo, feldespato, albita y pirofilita. Granulometrías desde malla #8/20 hasta malla #400 Tyler con remoción ferrosa magnética.
             </p>
-            <a href="?view=yacimientos" onclick="event.preventDefault(); window.navigate('?view=yacimientos')" class="arrow">Ver catálogo técnico →</a>
+            <a href="?view=yacimientos" onclick="event.preventDefault(); window.navigate('?view=yacimientos')" class="arrow">Ver yacimientos →</a>
           </div>
           
           <div class="service-card" style="padding-top:20px;">
-            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='100%' height='100%' fill='%23222' stroke='%23333' stroke-width='2'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='48' font-weight='bold' fill='%23666'>?</text></svg>" alt="Voladuras (Por reemplazar)" style="width:100%; height:150px; object-fit:cover; margin-bottom:20px; border:1px solid #1a1a1a;">
+            <img src="assets/naves-trituracion.jpg" alt="Trituración" style="width:100%; height:150px; object-fit:cover; margin-bottom:20px; border:1px solid #1a1a1a;">
             <div class="num">02</div>
-            <h3>Voladuras Controladas</h3>
+            <h3>Trituración de Minerales</h3>
             <p>
-              Diseño y ejecución de voladuras a cielo abierto para explotación de yacimientos y obra civil. Ensanche de caminos de montaña, túneles y zanjas con mediciones sísmicas de seguridad.
+              Trituración primaria y secundaria con mandíbulas y conos de alta capacidad. Reducción exacta del mineral en bruto para procesos industriales posteriores.
             </p>
-            <span class="arrow">Garantía de Seguridad Operativa</span>
+            <span class="arrow">Procesamiento continuo</span>
           </div>
           
           <div class="service-card" style="padding-top:20px;">
-            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='100%' height='100%' fill='%23222' stroke='%23333' stroke-width='2'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='48' font-weight='bold' fill='%23666'>?</text></svg>" alt="Exploración (Por reemplazar)" style="width:100%; height:150px; object-fit:cover; margin-bottom:20px; border:1px solid #1a1a1a;">
+            <img src="assets/camion-transporte.png" alt="Fletes y Transporte" style="width:100%; height:150px; object-fit:cover; margin-bottom:20px; border:1px solid #1a1a1a;">
             <div class="num">03</div>
-            <h3>Exploración y cubicación</h3>
+            <h3>Servicios de Fletes</h3>
             <p>
-              Perforación diamantina en frentes de cantera, cubicaciones de yacimientos y desarrollo de infraestructura minera. Equipamiento neumático e hidráulico operado por personal certificado.
+              Logística y transporte de mineral a granel y en big-bags. Flota de camiones propia y habilitada para distribución industrial segura en todo el país.
             </p>
-            <span class="arrow">Maquinaria de última generación</span>
+            <span class="arrow">Distribución nacional</span>
           </div>
         </div>
       </section>
@@ -565,42 +674,6 @@ function renderEquipos(container) {
           </div>
         </div>
       </section>
-
-      <!-- TIMELINE (TRAYECTORIA) -->
-      <section class="section-view timeline-section">
-        <span class="view-kicker">Trayectoria Histórica</span>
-        <div class="view-header">
-          <h2>Nuestra <span>Historia de Proyectos</span></h2>
-          <p>Hitos de provisión mineral y servicios de voladuras con nuestros clientes estratégicos.</p>
-        </div>
-        
-        <div class="timeline">
-          <div class="tl-item">
-            <div class="year">2024</div>
-            <div class="content"><strong>LIPAR</strong> — Suministro constante de cuarzo y feldespato molido en malla #325. Ejecución de voladuras de frente de cantera en San Luis.</div>
-          </div>
-          <div class="tl-item">
-            <div class="year">2022</div>
-            <div class="content"><strong>LIPAR</strong> — Renovación de contrato de provisión y servicios viales de destape y remoción.</div>
-          </div>
-          <div class="tl-item">
-            <div class="year">2019</div>
-            <div class="content"><strong>Molinos Alianza S.R.L.</strong> — Cooperación técnica y molienda cruzada para satisfacer la demanda de granulometría extra fina.</div>
-          </div>
-          <div class="tl-item">
-            <div class="year">2017</div>
-            <div class="content"><strong>Roar Naschel</strong> — Servicio integral de perforación diamantina y voladuras controladas en obra vial provincial.</div>
-          </div>
-          <div class="tl-item">
-            <div class="year">2015</div>
-            <div class="content"><strong>Piedra Grande S.A.</strong> — Trabajos de prospección, cubicación de feldespato y voladuras de alta precisión.</div>
-          </div>
-          <div class="tl-item">
-            <div class="year">1984</div>
-            <div class="content"><strong>Fundación</strong> — Apertura de canteras y planta piloto en Villa de Praga, San Luis. Inicio del procesamiento de minerales industriales.</div>
-          </div>
-        </div>
-      </section>
     </div>
   `;
 }
@@ -654,10 +727,39 @@ function renderContacto(container) {
             </div>
           </div>
           
-          <!-- MULTIPLE IMAGES FOR CONTACT VIEW -->
+          <!-- PHOTO AND ADVANCED GOOGLE MAP CARD -->
           <div style="display:grid; grid-template-columns:1fr; gap:16px;">
-            <img src="assets/operacion-cargadora.jpg" alt="Frente de cantera Voladuras San Luis" style="width: 100%; height: 200px; object-fit:cover; border:1px solid #333;">
-            <img src="assets/operacion-frente-cantera.jpeg" alt="Oficina Planta" style="width: 100%; height: 200px; object-fit:cover; border:1px solid #333;">
+            <img src="assets/operacion-cargadora.jpg" alt="Frente de cantera Voladuras San Luis" style="width: 100%; height: 180px; object-fit:cover; border:1px solid var(--border); border-radius: 8px;">
+            <div class="map-card" style="height: 240px;">
+              <div class="map-wrapper">
+                <iframe 
+                  class="map-iframe"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3546.068367980816!2d-65.63462838494715!3d-32.547091281042714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95d36f006018ff1f%3A0xc327f033041c2057!2sMolienda%3A%20Voladuras%20San%20Luis%20SRL!5e0!3m2!1ses-419!2sar!4v1720485600000!5m2!1ses-419!2sar"
+                  width="100%" 
+                  height="100%" 
+                  style="border:0;" 
+                  allowfullscreen="" 
+                  loading="lazy" 
+                  referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+              </div>
+              <div class="map-footer-bar" style="padding: 8px 12px;">
+                <div class="map-address-info" style="font-size: 11px;">
+                  <svg class="map-pin-icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </svg>
+                  <span>Villa de Praga, San Luis</span>
+                </div>
+                <a href="https://maps.app.goo.gl/qtoToUGA3w9KLLGg7" target="_blank" rel="noopener" class="map-link-btn" style="font-size: 10px;">
+                  <span>Ver Mapa</span>
+              <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -669,57 +771,65 @@ function renderContacto(container) {
    VIEW: MINERALES (CATALOGO COMPLETO)
    ============================================================ */
 function renderYacimientos(container) {
-  const OWNED_DEPOSITS = ['cuarzo', 'feldespato_potosico', 'fluorita'];
-  const OTHER_MINERALS = ['albita', 'pirofilita', 'baritina', 'chamote'];
+  const ALL_MINERALS = [
+    { key: 'cuarzo', type: 'yacimiento' },
+    { key: 'feldespato_potosico', type: 'yacimiento' },
+    { key: 'fluorita', type: 'yacimiento' },
+    { key: 'albita', type: 'maquila' },
+    { key: 'pirofilita', type: 'maquila' },
+    { key: 'baritina', type: 'maquila' },
+    { key: 'chamote', type: 'maquila' }
+  ];
 
-  const ownedCards = OWNED_DEPOSITS.map((key, i) => {
-    const m = MINERALS[key];
+  let mineralIndex = 1;
+  const cards = ALL_MINERALS.map((item) => {
+    const m = MINERALS[item.key];
     if (!m) return '';
+    
+    let kicker = '';
+    if (item.type === 'yacimiento') {
+      kicker = `0${mineralIndex++} — Cantera Propia`;
+    } else {
+      kicker = 'Otros Yacimientos';
+    }
+
     return `
       <a
         class="mineral-card"
-        href="?mineral=${key}"
-        id="card-${key}"
-        onclick="event.preventDefault(); window.navigate('?mineral=${key}')"
+        href="?mineral=${item.key}"
+        id="card-${item.key}"
+        onclick="event.preventDefault(); window.navigate('?mineral=${item.key}')"
         aria-label="Ver detalles de ${m.name}">
+        <span class="mineral-index">${kicker}</span>
         <img src="${m.img}" alt="${m.name}" class="mineral-card-img">
-        <span class="mineral-index">0${i + 1} — YACIMIENTO PROPIO</span>
         <h3>${m.name}</h3>
-        <p>${m.description}</p>
-        <div class="mineral-tags" style="margin-bottom: 24px; margin-top: 16px;">
+        <span class="mineral-formula">${m.formula}</span>
+        <div class="mineral-tags">
           ${m.tags.map(t => `<span class="tag">${t}</span>`).join('')}
         </div>
-        <div class="card-cta" style="font-size: 11px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 4px; margin-top: auto; padding-top: 16px;">
-          Ver detalles <span style="font-size: 12px; display: inline-block; transition: transform 0.15s ease;">→</span>
+        <div class="card-cta">
+          Ver ficha técnica <span>→</span>
         </div>
       </a>
     `;
-  }).join('');
+  });
 
-  const otherCards = OTHER_MINERALS.map((key, i) => {
-    const m = MINERALS[key];
-    if (!m) return '';
-    return `
-      <a
-        class="mineral-card"
-        href="?mineral=${key}"
-        id="card-${key}"
-        onclick="event.preventDefault(); window.navigate('?mineral=${key}')"
-        aria-label="Ver detalles de ${m.name}"
-        style="padding: 24px; border: 1px solid var(--border);">
-        <img src="${m.img}" alt="${m.name}" class="mineral-card-img">
-        <span class="mineral-index">MOLIENDA &amp; LOGÍSTICA</span>
-        <h4 style="font-size:18px; color:var(--text-white); margin-bottom:8px;">${m.name}</h4>
-        <p style="font-size:13px; line-height:1.5; color:var(--text-gray); margin-bottom:12px;">${m.description.slice(0, 110)}…</p>
-        <div class="mineral-tags" style="margin-top:12px; margin-bottom:24px;">
-          ${m.tags.map(t => `<span class="tag" style="font-size:9px; padding:2px 6px;">${t}</span>`).join('')}
-        </div>
-        <div class="card-cta" style="font-size: 10px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 4px; margin-top: auto; padding-top: 16px;">
-          Ver detalles <span style="font-size: 11px; display: inline-block; transition: transform 0.15s ease;">→</span>
-        </div>
-      </a>
-    `;
-  }).join('');
+  const ctaCard = `
+    <a
+      class="mineral-card card-cta-special"
+      href="?contacto"
+      onclick="event.preventDefault(); window.navigate('?view=contacto')"
+      aria-label="Consultar por otro mineral">
+      <div class="special-icon">?</div>
+      <h3>¿Busca otro mineral?</h3>
+      <p>Buscamos frentes o adaptamos nuestra molienda seca a su requerimiento industrial específico.</p>
+      <div class="card-cta">
+        CONTACTAR <span>→</span>
+      </div>
+    </a>
+  `;
+
+  cards.push(ctaCard);
 
   container.innerHTML = `
     <div class="view-container">
@@ -728,29 +838,14 @@ function renderYacimientos(container) {
         <div class="view-header" style="margin-bottom: 40px;">
           <h1>Yacimientos <span>y Molienda</span></h1>
           <div style="margin-top: 24px;">
-            <p style="max-width: 850px; font-size: 15px; color: var(--text-gray); line-height: 1.8; margin-bottom: 16px;">
-              En Voladuras San Luis operamos con el más alto estándar de profesionalismo en la explotación de yacimientos y procesamiento de minerales. Gestionamos frentes de extracción propios de <strong>Cuarzo</strong>, <strong>Feldespato</strong> y <strong>Fluorita</strong> con rigurosos controles de calidad.
-            </p>
             <p style="max-width: 850px; font-size: 15px; color: var(--text-gray); line-height: 1.8;">
-              Nuestra planta está equipada tecnológicamente para procesar, moler y clasificar a maquila (toll milling) <strong>cualquier tipo de yacimiento o mineral industrial</strong> provisto por su empresa, adaptándonos con máxima precisión a sus necesidades. Además, si requiere de un mineral específico que no esté en nuestro catálogo, tenemos la capacidad técnica y operativa para realizar la búsqueda, exploración y abastecimiento del recurso para su proyecto.
+              Explotamos yacimientos propios de <strong>Cuarzo</strong>, <strong>Feldespato</strong> y <strong>Fluorita</strong> bajo rigurosos controles de calidad. Contamos además con la capacidad técnica para procesar a maquila (toll milling) cualquier otro mineral industrial, o buscar y abastecer el recurso específico que su proyecto requiera.
             </p>
           </div>
         </div>
 
-        <h3 style="font-size: 20px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; font-weight: 700;">Yacimientos Propios</h3>
-        <p style="max-width: 750px; font-size: 14px; color: var(--text-gray); margin-bottom: 24px; line-height: 1.6;">
-          Explotación directa de canteras de la empresa. Seleccione cada material para visualizar su ficha técnica y aplicaciones industriales:
-        </p>
         <div class="minerals-grid" role="list" style="margin-bottom: 60px;">
-          ${ownedCards}
-        </div>
-
-        <h3 style="font-size: 20px; color: var(--text-white); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; font-weight: 700;">Capacidad de Procesamiento de otros Minerales</h3>
-        <p style="max-width: 750px; font-size: 14px; color: var(--text-gray); margin-bottom: 24px; line-height: 1.6;">
-          Experiencia técnica y operativa procesando otros frentes minerales a la medida del cliente. Seleccione para ver más información técnica:
-        </p>
-        <div class="minerals-grid" role="list" style="grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; background: transparent; border: none;">
-          ${otherCards}
+          ${cards.join('')}
         </div>
       </div>
     </div>
@@ -849,40 +944,42 @@ function renderMallas(container) {
 
   container.innerHTML = `
     <div class="view-container">
-      <div class="mallas-view" id="main-content-target">
-        <div class="view-header">
-          <span class="view-kicker">Distribución Granulométrica</span>
-          <h1>Especificaciones por Malla</h1>
-          <p>Seleccioná la malla Tyler de corte para visualizar sus aplicaciones B2B más comunes y los minerales disponibles.</p>
-        </div>
-        <div class="mallas-layout">
-          <div class="mallas-sidebar" role="tablist" aria-label="Mallas industriales">
-            <span class="sidebar-label">Tamizado Tyler</span>
-            <div class="mallas-tabs-container">
-              ${buttons}
+      <section class="section-view" style="padding-top: 48px;">
+        <div class="mallas-view" id="main-content-target">
+          <div class="view-header">
+            <span class="view-kicker">Distribución Granulométrica</span>
+            <h1>Especificaciones por Malla</h1>
+            <p>Seleccioná la malla Tyler de corte para visualizar sus aplicaciones B2B más comunes y los minerales disponibles.</p>
+          </div>
+          <div class="mallas-layout">
+            <div class="mallas-sidebar" role="tablist" aria-label="Mallas industriales">
+              <span class="sidebar-label">Tamizado Tyler</span>
+              <div class="mallas-tabs-container">
+                ${buttons}
+              </div>
+            </div>
+            <div class="mallas-detail">
+              ${details}
             </div>
           </div>
-          <div class="mallas-detail">
-            ${details}
-          </div>
-        </div>
 
-        <!-- ADDITIONAL PHOTOS FOR MALLAS -->
-        <div style="margin-top: 60px; border-top: 1px solid var(--border); padding-top: 40px;">
-          <span class="view-kicker">Procesamiento Industrial</span>
-          <h3 style="font-size:24px; color:var(--text-white); margin-bottom:20px; font-weight:800; letter-spacing:-0.02em;">Control de Tamizado y Clasificación en Planta</h3>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-            <div>
-              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='100%' height='100%' fill='%23222' stroke='%23333' stroke-width='2'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='48' font-weight='bold' fill='%23666'>?</text></svg>" alt="Silos de Clasificación (Por reemplazar)" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--border-strong);">
-              <p style="font-size:11px; color:var(--text-gray); margin-top:8px; text-transform:uppercase; font-weight:700; letter-spacing:0.05em;">Silos de Clasificación Neumática</p>
-            </div>
-            <div>
-              <img src="assets/galpones-stock-lotes.jpg" alt="Stock en Galpones" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--border-strong);">
-              <p style="font-size:11px; color:var(--text-gray); margin-top:8px; text-transform:uppercase; font-weight:700; letter-spacing:0.05em;">Lotes Clasificados Listos para Despacho</p>
+          <!-- ADDITIONAL PHOTOS FOR MALLAS -->
+          <div style="margin-top: 60px; border-top: 1px solid var(--border); padding-top: 40px;">
+            <span class="view-kicker">Procesamiento Industrial</span>
+            <h3 style="font-size:24px; color:var(--text-white); margin-bottom:20px; font-weight:800; letter-spacing:-0.02em;">Control de Tamizado y Clasificación en Planta</h3>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+              <div>
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='100%' height='100%' fill='%23222' stroke='%23333' stroke-width='2'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='48' font-weight='bold' fill='%23666'>?</text></svg>" alt="Silos de Clasificación (Por reemplazar)" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--border-strong);">
+                <p style="font-size:11px; color:var(--text-gray); margin-top:8px; text-transform:uppercase; font-weight:700; letter-spacing:0.05em;">Silos de Clasificación Neumática</p>
+              </div>
+              <div>
+                <img src="assets/galpones-stock-lotes.jpg" alt="Stock en Galpones" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--border-strong);">
+                <p style="font-size:11px; color:var(--text-gray); margin-top:8px; text-transform:uppercase; font-weight:700; letter-spacing:0.05em;">Lotes Clasificados Listos para Despacho</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   `;
   setTimeout(() => selectMalla(0), 0);
@@ -911,9 +1008,9 @@ function selectMalla(index) {
    ============================================================ */
 function renderCalidad(container) {
   const qualityCards = [
-    { num: '100%', unit: 'Rastreabilidad de lote', title: 'Trazabilidad total batch-a-batch', desc: 'Cada bolsa y big-bag lleva código de lote rastreable hasta el informe analítico del laboratorio en planta.' },
+    { num: '100%', unit: 'Rastreabilidad de lote', title: 'Trazabilidad total batch-a-batch', desc: 'Cada bolsa y big-bag lleva código de lote rastreable hasta el informe analítico del laboratorio.' },
     { num: 'FRX', unit: 'Rayos X Cuantitativos', title: 'Fluorescencia elemental', desc: 'Método primario para la cuantificación exacta de Fe₂O₃, Al₂O₃, K₂O, Na₂O, SiO₂ y óxidos acompañantes.' },
-    { num: 'ISO', unit: 'Protocolos internacionales', title: 'Normas ISO 2470 / 787 / 9277', desc: 'Medición espectrofotométrica de blancura, distribución granulométrica y superficie específica certificada.' }
+    { num: 'ISO', unit: 'Protocolos internacionales', title: 'Normas ISO 2470 / 787 / 9277', desc: 'Medición espectrofotométrica de blancura, distribución granulométrica y superficie específica.' }
   ].map((c, i) => `
     <div class="quality-card">
       <span class="qc-num">${c.num}</span>
@@ -925,105 +1022,182 @@ function renderCalidad(container) {
 
   const labParams = [
     { name: 'Blancura (ISO 2470)', value: '> 92° ISO', method: 'Espectrofotómetro de reflectancia d/8°' },
-    { name: 'Fe₂O₃ (Cero Hierro)', value: '< 0.015%', method: 'FRX / Espectrometría de plasma (ICP)' },
+    { name: 'Fe₂O₃ (Cero Hierro)', value: '< 0.015%', method: 'FRX / Espectrometría de plasma (ICP)', showChart: true },
     { name: 'Tamizado Tyler', value: '±2% retención máx.', method: 'Tamizado húmedo rotativo' },
     { name: 'Humedad de despacho', value: '< 0.5%', method: 'Termobalanza infrarroja a 105°C' }
   ].map((p, i) => `
-    <div class="lab-param">
+    <div class="lab-param ${p.showChart ? 'has-inline-chart' : ''}">
       <span class="lp-name">${p.name}</span>
       <span class="lp-value">${p.value}</span>
       <span class="lp-method">${p.method}</span>
+      ${p.showChart ? `
+        <div class="inline-comparison-chart">
+          <div class="icc-bar-group">
+            <div class="icc-label-row">
+              <span>Tolerancia de la Industria</span>
+              <span>0.100%</span>
+            </div>
+            <div class="icc-bar-track">
+              <div class="icc-bar-fill bar-industry" style="width: 100%;"></div>
+            </div>
+          </div>
+          <div class="icc-bar-group">
+            <div class="icc-label-row">
+              <span>Especificación Voladuras San Luis</span>
+              <span class="vsl-val">&lt; 0.015%</span>
+            </div>
+            <div class="icc-bar-track">
+              <div class="icc-bar-fill bar-vsl" style="width: 15%;"></div>
+            </div>
+          </div>
+        </div>
+      ` : ''}
     </div>
   `).join('');
 
   container.innerHTML = `
     <div class="view-container">
-      <div class="calidad-view" id="main-content-target">
-        <div class="calidad-hero">
-          <div>
-            <div class="view-header" style="border-left: none; padding-left: 0; margin-bottom: 0;">
-              <span class="view-kicker">Laboratorio Analítico · Villa de Praga</span>
-              <h1>Garantía<br><span>Cero Hierro</span></h1>
-              <p style="margin-top: 16px;">
-                Cada lote producido en nuestra planta de Villa de Praga, San Luis, pasa por un riguroso control analítico de blancura y cuantificación de hierro por fluorescencia de rayos X (FRX). El hierro es el enemigo de la blancura técnica. Aquí lo eliminamos mediante purificación magnética de alta intensidad.
-              </p>
-            </div>
+      <section class="section-view" style="padding-top: 48px;">
+        <div class="calidad-view" id="main-content-target">
+          
+          <div class="calidad-hero-compact">
+            <span class="view-kicker">Laboratorio Analítico · Villa de Praga</span>
+            <h1>Control y Garantía de <span>Calidad</span></h1>
+            <p>
+              Garantizamos la pureza extrema de nuestros minerales industriales mediante rigurosos controles analíticos de blancura técnica y cuantificación elemental.
+            </p>
           </div>
-          <div class="cert-box">
-            <span class="cb-label">Límite ferroso garantizado</span>
-            <span class="cb-val">&lt; 0.015%</span>
-            <p>Fe₂O₃ máximo en nuestro cuarzo grado sanitario y vidrio técnico.</p>
-            <div class="cb-divider"></div>
-            <span class="cb-label">blancura garantizada</span>
-            <span class="cb-val">92° ISO</span>
-            <p>Medición espectrofotométrica según norma internacional ISO 2470-1.</p>
-          </div>
-        </div>
 
-        <!-- Comparative Chart: Impurity levels (Fe2O3) -->
-        <div class="quality-comparison-chart">
-          <span class="qcc-title">Nivel Comparativo de Impureza Crítica (Fe₂O₃)</span>
-          <div class="qcc-bars">
-            <div class="qcc-bar-group">
-              <div class="qcc-label-row">
-                <span>Tolerancia de la Industria (Gres Porcelánico y Vidrio Float)</span>
-                <span class="qcc-val">0.100%</span>
-              </div>
-              <div class="qcc-bar-track">
-                <div class="qcc-bar-fill bar-industry"></div>
-              </div>
+          <div class="quality-tabs-container">
+            <div class="quality-tabs-nav" role="tablist">
+              <button class="tab-btn active" data-target="tab-garantias" role="tab" aria-selected="true" onclick="switchQualityTab(this)">
+                <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                Garantías y Parámetros
+              </button>
+              <button class="tab-btn" data-target="tab-laboratorio" role="tab" aria-selected="false" onclick="switchQualityTab(this)">
+                <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10 2v7.31L4.75 19.37A2 2 0 0 0 6.5 22h11a2 2 0 0 0 1.75-2.63L14 9.31V2"/>
+                  <path d="M8.5 2h7"/>
+                  <path d="M7 16h10"/>
+                </svg>
+                Servicios de Laboratorio
+              </button>
+              <button class="tab-btn" data-target="tab-trazabilidad" role="tab" aria-selected="false" onclick="switchQualityTab(this)">
+                <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                  <line x1="12" y1="22.08" x2="12" y2="12"/>
+                </svg>
+                Trazabilidad y Tecnología
+              </button>
             </div>
-            <div class="qcc-bar-group">
-              <div class="qcc-label-row">
-                <span>Especificación Voladuras San Luis (Grado Purificado)</span>
-                <span class="qcc-val vsl-value">&lt; 0.015%</span>
-              </div>
-              <div class="qcc-bar-track">
-                <div class="qcc-bar-fill bar-vsl vsl-fill"></div>
-              </div>
-            </div>
-          </div>
-          <span class="qcc-caption">* Valores expresados en porcentaje de óxido de hierro. Un menor valor de Fe₂O₃ evita coloraciones indeseadas durante la fusión cerámica o vítrea.</span>
-        </div>
 
-        <div class="quality-grid" role="list">
-          ${qualityCards}
-        </div>
-
-        <div class="lab-section">
-          <span class="ls-kicker">Parámetros Críticos de Control</span>
-          <h3>Certificación de Despacho</h3>
-          <p style="margin-bottom: 24px;">
-            El proceso de análisis físico-químico se ejecuta en frentes de extracción, trituración primaria y almacenamiento final. El certificado emitido detalla las siguientes especificaciones:
-          </p>
-          <div class="lab-params">
-            ${labParams}
-          </div>
-        </div>
-
-        <!-- ADDITIONAL PHOTOS FOR CALIDAD -->
-        <div style="margin-top: 60px; border-top: 1px solid var(--border); padding-top: 40px;">
-          <span class="view-kicker">Control de Calidad B2B</span>
-          <h3 style="font-size:24px; color:var(--text-white); margin-bottom:20px; font-weight:800; letter-spacing:-0.02em;">Instalaciones de Control y Ensayos de Blancura</h3>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-            <div>
-              <img src="assets/laboratorio-espectrofotometro.jpg" alt="Controladores de Blancura" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--border-strong);">
-              <p style="font-size:11px; color:var(--text-gray); margin-top:8px; text-transform:uppercase; font-weight:700; letter-spacing:0.05em;">Medición Espectrofotométrica de Blancura y Alúmina</p>
+            <div class="quality-tab-content active" id="tab-garantias" role="tabpanel">
+              <div class="tab-split">
+                <div class="tab-text">
+                  <h3>Especificaciones Técnicas Garantizadas</h3>
+                  <p>
+                    Nuestros procesos de purificación magnética de alta intensidad eliminan contaminantes ferrosos para cumplir con las exigencias críticas de la industria cerámica y del vidrio de alta blancura.
+                  </p>
+                  <div class="highlight-spec-box">
+                    <div class="hsb-item">
+                      <span class="hsb-label">Hierro Garantizado</span>
+                      <span class="hsb-val">&lt; 0.015%</span>
+                      <span class="hsb-desc">Máximo en cuarzo y vidrio técnico</span>
+                    </div>
+                    <div class="hsb-item">
+                      <span class="hsb-label">Blancura Garantizada</span>
+                      <span class="hsb-val">92° ISO</span>
+                      <span class="hsb-desc">Medición espectrofotométrica ISO 2470-1</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-params-grid">
+                  ${labParams}
+                </div>
+              </div>
             </div>
-            <div>
-              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='100%' height='100%' fill='%23222' stroke='%23333' stroke-width='2'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='48' font-weight='bold' fill='%23666'>?</text></svg>" alt="Laboratorio de Ensayos (Por reemplazar)" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--border-strong);">
-              <p style="font-size:11px; color:var(--text-gray); margin-top:8px; text-transform:uppercase; font-weight:700; letter-spacing:0.05em;">Ensayos de Trazabilidad y Análisis de Fe₂O₃</p>
+
+            <div class="quality-tab-content" id="tab-laboratorio" role="tabpanel">
+              <div class="tab-split">
+                <div class="tab-text">
+                  <h3>Laboratorio en Planta</h3>
+                  <p>
+                    Contamos con instalaciones de laboratorio totalmente equipadas para realizar análisis físicos y químicos continuos de cada lote. Brindamos servicios especializados de:
+                  </p>
+                  <ul class="quality-features-list">
+                    <li>
+                      <strong>Análisis Granulométrico:</strong>
+                      <span>Medición de la distribución del tamaño de partícula mediante tamizado húmedo y seco Tyler para asegurar consistencia granulométrica.</span>
+                    </li>
+                    <li>
+                      <strong>Conductividad Eléctrica:</strong>
+                      <span>Determinación de la conductividad iónica en solución para comprobar el nivel de sales y pureza del mineral.</span>
+                    </li>
+                    <li>
+                      <strong>Muestras Industriales:</strong>
+                      <span>Preparación y despacho de muestras piloto específicas para pruebas industriales y validación directa en planta del cliente.</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="tab-visual">
+                  <img src="assets/laboratorio-fuera.jpg" alt="Equipos de Laboratorio" class="lab-main-img">
+                  <span class="img-caption">Medición Espectrofotométrica de Blancura y Alúmina</span>
+                </div>
+              </div>
             </div>
+
+            <div class="quality-tab-content" id="tab-trazabilidad" role="tabpanel">
+              <div class="tab-split-vertical">
+                <div class="tab-intro-text">
+                  <h3>Trazabilidad Total y Tecnología Analítica</h3>
+                  <p>
+                    Garantizamos un control estricto desde el frente de extracción hasta la entrega final B2B del producto embolsado o a granel.
+                  </p>
+                </div>
+                <div class="quality-grid-wrapper">
+                  ${qualityCards}
+                </div>
+              </div>
+            </div>
+
           </div>
+
         </div>
-      </div>
+      </section>
     </div>
   `;
+}
+
+function switchQualityTab(btn) {
+  const buttons = document.querySelectorAll('.quality-tabs-nav .tab-btn');
+  const contents = document.querySelectorAll('.quality-tab-content');
+  const targetId = btn.getAttribute('data-target');
+  
+  buttons.forEach(b => {
+    b.classList.remove('active');
+    b.setAttribute('aria-selected', 'false');
+  });
+  
+  contents.forEach(c => {
+    c.classList.remove('active');
+  });
+  
+  btn.classList.add('active');
+  btn.setAttribute('aria-selected', 'true');
+  
+  const targetEl = document.getElementById(targetId);
+  if (targetEl) {
+    targetEl.classList.add('active');
+  }
 }
 
 // Global exposure
 window.selectMalla = selectMalla;
 window.navigate = navigate;
+window.switchQualityTab = switchQualityTab;
 
 /* ============================================================
    THEME SWITCHER & MOBILE DRAWER LOGIC
