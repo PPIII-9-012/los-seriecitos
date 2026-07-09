@@ -15,9 +15,19 @@ Este documento detalla cronológicamente todos los cambios realizados en el siti
   * Se optimizó la galería para mostrar inicialmente solo **3 fotos destacadas** de operación, ocultando las **17 fotos restantes** del total de 20 recursos de `assets/`.
   * Se incorporó el botón dinámico **"Ver todas las fotos"** para expandir y colapsar la galería de forma instantánea.
   * Se eliminó el bloque de imagen roto correspondiente a `laboratorio-espectrofotometro.jpg` (archivo inexistente) y se verificaron los 20 recursos restantes.
-* **Ubicación y Mapa en Dos Columnas:**
-  * Se reestructuró la sección de ubicación utilizando la grilla responsiva `.contact-grid`.
-  * Ahora los datos físicos y logísticos se organizan a la izquierda y el mapa interactivo se posiciona a la derecha con una altura optimizada de `280px` en pantallas de escritorio.
+* **Ubicación y Mapa Satelital Persistente (Caché SPA):**
+  * Se reestructuró la sección de ubicación en Inicio utilizando la grilla responsiva `.contact-grid` (información a la izquierda, mapa a la derecha).
+  * **Estilo Satelital y Zoom:** Se configuró el mapa en vista satelital (`t=k`) con un nivel de zoom balanceado (`z=16`) para visualizar tanto las naves de la planta como el entorno geográfico de acceso.
+  * **Caché Persistente en SPA (Sin Recargas):** Se reprogramó la carga del mapa en [app.js](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/app.js) para crearlo dinámicamente y preservarlo en memoria (`persistent-map-holder`) al cambiar de sección, evitando parpadeos o recargas.
+  * **Pre-carga en Segundo Plano:** Inicialización inmediata al dispararse `DOMContentLoaded`.
+* **Imagen del Apartado de Contacto:**
+  * Se reemplazó la foto de la pala cargadora en la vista de Contacto por `assets/instalaciones-planta.jpg` (Instalaciones de Planta Voladuras San Luis), ofreciendo una imagen mucho más representativa de las oficinas y planta de molienda principal.
+
+* **Reemplazo de Imágenes de Marcador "?" (Placeholders):**
+  * Se sustituyeron todos los marcadores SVG temporales (`?`) por imágenes operativas reales y únicas de la cantera y planta, asegurando que ninguna imagen se repita en las secciones internas:
+    * **Sobre Nosotros (Nosotros View):** Se implementó `yacimiento-reservas.jpeg` (Reservas de Explotación) y `yacimiento-calizo.jpeg` (Yacimiento Calizo).
+    * **Equipos y Maquinaria (Equipos View):** Se implementó `flota-pesada-cargadoras.jpg` (Flota Pesada de Cargadoras).
+    * **Mallas y Granulometría (Mallas View):** Se implementó `silos-clasificacion.jpg` (Silos de Clasificación).
 
 ### 👣 Rediseño Profesional y Responsivo del Footer
 * **Estructura Depurada de 2 Columnas:**

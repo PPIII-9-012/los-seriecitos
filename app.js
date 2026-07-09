@@ -193,6 +193,33 @@ const MALLAS = [
    ROUTER & ENGINE
    ============================================================ */
 
+let cachedMapIframe = null;
+
+function getMapIframe() {
+  if (!cachedMapIframe) {
+    cachedMapIframe = document.createElement('iframe');
+    cachedMapIframe.className = 'map-iframe';
+    // Satellite view (t=k), zoom 16 (z=16), embedded output
+    cachedMapIframe.src = 'https://maps.google.com/maps?q=-32.547091,-65.634628&t=k&z=16&output=embed';
+    cachedMapIframe.width = '100%';
+    cachedMapIframe.height = '100%';
+    cachedMapIframe.style.border = '0';
+    cachedMapIframe.allowFullscreen = '';
+    cachedMapIframe.loading = 'lazy';
+    cachedMapIframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+    
+    // Create a hidden persistent container on body to keep iframe loaded in background
+    let holder = document.getElementById('persistent-map-holder');
+    if (!holder) {
+      holder = document.createElement('div');
+      holder.id = 'persistent-map-holder';
+      holder.style.display = 'none';
+      document.body.appendChild(holder);
+    }
+  }
+  return cachedMapIframe;
+}
+
 function navigate(path) {
   // Use relative page state parameter navigation to avoid breaking file:// protocol
   history.pushState({}, '', path);
@@ -202,6 +229,13 @@ function navigate(path) {
 }
 
 function render() {
+  // Move map iframe to persistent hidden holder before destroying the current view
+  const map = getMapIframe();
+  const holder = document.getElementById('persistent-map-holder');
+  if (holder && map && map.parentNode !== holder) {
+    holder.appendChild(map);
+  }
+
   const params = new URLSearchParams(window.location.search);
   const view = params.get('view');
   const mineral = params.get('mineral');
@@ -258,6 +292,12 @@ function initDynamicBehaviors(container) {
   const el = container.querySelector('.view-container');
   if (el) {
     el.classList.add('visible');
+  }
+
+  // Inject persistent map iframe to avoid reloading
+  const mapPlaceholder = container.querySelector('#map-iframe-placeholder');
+  if (mapPlaceholder) {
+    mapPlaceholder.appendChild(getMapIframe());
   }
 
   const counters = container.querySelectorAll('[data-count]');
@@ -487,17 +527,8 @@ function renderHome(container) {
           </div>
           <!-- Columna Derecha: Mapa Compacto -->
           <div class="map-card" style="height: 280px;">
-            <div class="map-wrapper">
-              <iframe 
-                class="map-iframe"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3546.068367980816!2d-65.63462838494715!3d-32.547091281042714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95d36f006018ff1f%3A0xc327f033041c2057!2sMolienda%3A%20Voladuras%20San%20Luis%20SRL!5e0!3m2!1ses-419!2sar!4v1720485600000!5m2!1ses-419!2sar"
-                width="100%" 
-                height="100%" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-              </iframe>
+            <div class="map-wrapper" id="map-iframe-placeholder">
+              <!-- Persistent map iframe will be injected here dynamically -->
             </div>
             <div class="map-footer-bar" style="padding: 8px 16px;">
               <a href="https://maps.app.goo.gl/qtoToUGA3w9KLLGg7" target="_blank" rel="noopener" class="map-link-btn">
@@ -533,9 +564,9 @@ function renderNosotros(container) {
           <!-- NOSOTROS PHOTO GRID -->
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
             <img src="assets/naves-trituracion.jpg" alt="Molienda" style="width:100%; height:180px; object-fit:cover; border:1px solid #333;">
-            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='100%' height='100%' fill='%23222' stroke='%23333' stroke-width='2'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='48' font-weight='bold' fill='%23666'>?</text></svg>" alt="Reservas (Por reemplazar)" style="width:100%; height:180px; object-fit:cover; border:1px solid #333;">
+            <img src="assets/yacimiento-reservas.jpeg" alt="Reservas de Explotación" style="width:100%; height:180px; object-fit:cover; border:1px solid #333;">
             <img src="assets/rampa-transporte.jpeg" alt="Acceso" style="width:100%; height:180px; object-fit:cover; border:1px solid #333;">
-            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='100%' height='100%' fill='%23222' stroke='%23333' stroke-width='2'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='48' font-weight='bold' fill='%23666'>?</text></svg>" alt="Sal (Por reemplazar)" style="width:100%; height:180px; object-fit:cover; border:1px solid #333;">
+            <img src="assets/yacimiento-calizo.jpeg" alt="Yacimiento Calizo" style="width:100%; height:180px; object-fit:cover; border:1px solid #333;">
           </div>
           
           <div class="text">
@@ -632,7 +663,7 @@ function renderEquipos(container) {
         <!-- PROTOTYPE MACHINERY BANNER GRID -->
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:48px;">
           <img src="assets/perforadora-sandvik.jpeg" alt="Sandvik DX680" style="width:100%; height:260px; object-fit:cover; border:1px solid #333;">
-          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='100%' height='100%' fill='%23222' stroke='%23333' stroke-width='2'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='48' font-weight='bold' fill='%23666'>?</text></svg>" alt="Pala SDLG (Por reemplazar)" style="width:100%; height:260px; object-fit:cover; border:1px solid #333;">
+          <img src="assets/flota-pesada-cargadoras.jpg" alt="Flota Pesada de Cargadoras" style="width:100%; height:260px; object-fit:cover; border:1px solid #333;">
         </div>
 
         <div class="equipment-grid">
@@ -729,19 +760,10 @@ function renderContacto(container) {
           
           <!-- PHOTO AND ADVANCED GOOGLE MAP CARD -->
           <div style="display:grid; grid-template-columns:1fr; gap:16px;">
-            <img src="assets/operacion-cargadora.jpg" alt="Frente de cantera Voladuras San Luis" style="width: 100%; height: 180px; object-fit:cover; border:1px solid var(--border); border-radius: 8px;">
+            <img src="assets/instalaciones-planta.jpg" alt="Instalaciones de Planta Voladuras San Luis" style="width: 100%; height: 180px; object-fit:cover; border:1px solid var(--border); border-radius: 8px;">
             <div class="map-card" style="height: 240px;">
-              <div class="map-wrapper">
-                <iframe 
-                  class="map-iframe"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3546.068367980816!2d-65.63462838494715!3d-32.547091281042714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95d36f006018ff1f%3A0xc327f033041c2057!2sMolienda%3A%20Voladuras%20San%20Luis%20SRL!5e0!3m2!1ses-419!2sar!4v1720485600000!5m2!1ses-419!2sar"
-                  width="100%" 
-                  height="100%" 
-                  style="border:0;" 
-                  allowfullscreen="" 
-                  loading="lazy" 
-                  referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+              <div class="map-wrapper" id="map-iframe-placeholder">
+                <!-- Persistent map iframe will be injected here dynamically -->
               </div>
               <div class="map-footer-bar" style="padding: 8px 12px;">
                 <div class="map-address-info" style="font-size: 11px;">
@@ -969,7 +991,7 @@ function renderMallas(container) {
             <h3 style="font-size:24px; color:var(--text-white); margin-bottom:20px; font-weight:800; letter-spacing:-0.02em;">Control de Tamizado y Clasificación en Planta</h3>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
               <div>
-                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='100%' height='100%' fill='%23222' stroke='%23333' stroke-width='2'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='48' font-weight='bold' fill='%23666'>?</text></svg>" alt="Silos de Clasificación (Por reemplazar)" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--border-strong);">
+                <img src="assets/silos-clasificacion.jpg" alt="Silos de Clasificación" style="width:100%; height:260px; object-fit:cover; border:1px solid var(--border-strong);">
                 <p style="font-size:11px; color:var(--text-gray); margin-top:8px; text-transform:uppercase; font-weight:700; letter-spacing:0.05em;">Silos de Clasificación Neumática</p>
               </div>
               <div>
@@ -1269,5 +1291,7 @@ initTheme();
 window.addEventListener('popstate', render);
 document.addEventListener('DOMContentLoaded', () => {
   initThemeAndDrawerListeners();
+  // Preload map iframe in background
+  getMapIframe();
   render();
 });
