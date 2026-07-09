@@ -939,28 +939,36 @@ function renderMallas(container) {
       aria-pressed="${i === 0 ? 'true' : 'false'}"
       aria-label="Malla ${m.num}, ${m.microns}">
       <span class="mb-num">${m.num}</span>
-      <span class="mb-size">${m.microns}</span>
     </button>
   `).join('');
 
   const details = MALLAS.map((m, i) => `
     <div class="malla-info ${i === 0 ? 'active' : ''}" id="malla-info-${i}" role="tabpanel">
-      <span class="mi-num">${m.num}</span>
-      <span class="mi-size">${m.microns} — Apertura Nominal de Malla Tyler</span>
-      <ul class="industries-list">
-        ${m.industries.map(ind => `
-          <li>
-            <span>
-              <span class="ind-name">${ind.name}</span>
-              <span class="ind-desc">${ind.desc}</span>
-            </span>
-          </li>
-        `).join('')}
-      </ul>
-      <p class="mineral-for">
-        Minerales disponibles en esta granulometría:
-        ${m.minerals.map(mn => `<span>${mn}</span>`).join('')}
-      </p>
+      <div class="malla-detail-header">
+        <span class="mi-num">${m.num}</span>
+        <span class="mi-size">${m.microns} — Apertura Nominal de Malla Tyler</span>
+      </div>
+      
+      <div class="malla-detail-grid">
+        <div class="malla-apps-column">
+          <span class="malla-column-label">Aplicaciones Industriales B2B</span>
+          <div class="malla-industries-list">
+            ${m.industries.map(ind => `
+              <div class="malla-industry-card">
+                <h4 class="ind-name">${ind.name}</h4>
+                <p class="ind-desc">${ind.desc}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        
+        <div class="malla-minerals-column">
+          <span class="malla-column-label">Minerales Disponibles</span>
+          <div class="malla-badges-container">
+            ${m.minerals.map(mn => `<span class="malla-badge">${mn}</span>`).join('')}
+          </div>
+        </div>
+      </div>
     </div>
   `).join('');
 
@@ -978,13 +986,16 @@ function renderMallas(container) {
               <span class="sidebar-label">Tamizado Tyler</span>
               <div class="mallas-tabs-container">
                 ${buttons}
+                <a href="https://docs.google.com/spreadsheets/d/1juUnuY_5T-_FnfxprSMYXW5rkKroizDF2ktayy2oJR8/edit?usp=sharing" class="malla-btn-action" target="_blank" title="Ver catálogo completo en Google Sheets">
+                  <span>Ver todo</span>
+                </a>
               </div>
             </div>
             <div class="mallas-detail">
               ${details}
             </div>
           </div>
-
+          
           <!-- ADDITIONAL PHOTOS FOR MALLAS -->
           <div style="margin-top: 60px; border-top: 1px solid var(--border); padding-top: 40px;">
             <span class="view-kicker">Procesamiento Industrial</span>

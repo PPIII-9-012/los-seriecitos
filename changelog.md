@@ -2,7 +2,23 @@
 
 Este documento detalla cronológicamente todos los cambios realizados en el sitio web de **Voladuras San Luis S.R.L.** (Procesamiento y Molienda de Minerales no Metalíferos) durante la sesión actual de desarrollo.
 
-## [v1.6.0] — 2026-07-08 (Sesión Actual)
+## [v1.6.0] — 2026-07-08 / 2026-07-09 (Sesión Actual)
+
+### 🌾 Rediseño Compacto y Profesional de Sección Mallas
+* **Sidebar Compacta y Fija:**
+  * Se configuró la barra lateral de mallas en [style.css](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/style.css) a un ancho fijo de `180px` para evitar variaciones de tamaño.
+  * Se eliminaron los micrones (`.mb-size`) de los botones de selección en [app.js](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/app.js) para lograr un listado mucho más limpio y uniforme (ej. `#400`, `#325`, etc.).
+  * El botón activo se resalta mediante un elegante borde izquierdo dorado de precisión (`border-left: 3px solid var(--gold);`) y un fondo oscuro integrado (`var(--bg-deep)`).
+* **Marco Protector de Contenido (No Flotante):**
+  * Se dotó a la sección de detalles `.mallas-detail` en [style.css](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/style.css) de un marco con fondo gris oscuro (`var(--bg-alt)`) y un borde fino de 1px (`var(--border-strong)`) con un padding de `32px` (`20px` en móviles). Esto enmarca la información técnica y evita que los elementos se sientan flotando en el vacío del fondo.
+  * Se configuró el fondo de las tarjetas de aplicación `.malla-industry-card` y los chips `.malla-badge` al tono oscuro profundo (`var(--bg-deep)`) para asegurar una correcta relación de contraste y profundidad visual.
+* **Detalles Reestructurados en 2 Columnas:**
+  * Se modificó el panel de información en [app.js](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/app.js) y se dividió en una grilla responsiva de dos columnas (aplicaciones B2B a la izquierda en tarjetas y minerales disponibles a la derecha como chips independientes).
+  * Se compactó el tamaño de la tipografía gigante del número de malla (`.mi-num`) a `40px` de alto para optimizar el espacio vertical.
+* **Integración del Catálogo en la Nube (Google Sheets):**
+  * Se agregó un botón de acción `.malla-btn-action` al final de la barra lateral que dice **"VER TODO"** (sin emojis) y enlaza directamente al catálogo con especificaciones detalladas en Google Sheets.
+* **Adaptabilidad Móvil Responsiva:**
+  * Se añadieron overrides en la media query de [style.css](file:///c:/Users/HuGOD777/proyectos%20practica/los-seriecitos/style.css) para que la malla activa use un borde inferior dorado (`border-bottom: 3px solid var(--gold);`) en lugar de izquierdo, y el botón "Ver todo" se muestre ordenadamente como una pestaña horizontal deslizable.
 
 ### 🏠 Rediseño Integral de la Página Principal (Inicio)
 * **Animación de Scroll en el Hero:**

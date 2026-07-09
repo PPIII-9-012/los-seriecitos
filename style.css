@@ -1390,11 +1390,10 @@ body.light-theme .map-iframe {
 
 /* ============================================================
    VIEW: MALLAS
-   ============================================================ */
-.mallas-layout {
+   ============================================================ */.mallas-layout {
   display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 48px;
+  grid-template-columns: 180px 1fr;
+  gap: 32px;
   align-items: start;
 }
 
@@ -1416,55 +1415,90 @@ body.light-theme .map-iframe {
 .mallas-tabs-container {
   border: 1px solid var(--border-strong);
   background: var(--bg-alt);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .malla-btn {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
-  padding: 18px 24px;
+  padding: 14px 20px;
   background: none;
   border: none;
   border-bottom: 1px solid var(--border);
   cursor: pointer;
   text-align: left;
   font-family: inherit;
+  transition: all 0.15s ease;
 }
 
 .malla-btn:last-child {
   border-bottom: none;
 }
 
-.malla-btn.active,
 .malla-btn:hover {
-  background: var(--gold);
+  background: rgba(255, 255, 255, 0.02);
 }
 
-.malla-btn.active .mb-num,
+.malla-btn.active {
+  background: var(--bg-deep);
+  border-left: 3px solid var(--gold);
+  border-color: var(--border) var(--border) var(--border) var(--gold);
+}
+
+.malla-btn.active .mb-num {
+  color: var(--gold);
+}
+
 .malla-btn:hover .mb-num {
-  color: #0A0A0A;
-}
-
-.malla-btn.active .mb-size,
-.malla-btn:hover .mb-size {
-  color: rgba(10, 10, 10, 0.7);
-}
-
-.malla-btn .mb-num {
-  font-size: 18px;
-  font-weight: 900;
   color: var(--text-white);
 }
 
-.malla-btn .mb-size {
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--text-gray);
+.malla-btn .mb-num {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-white);
+  transition: color 0.15s ease;
+}
+
+/* BOTÓN DE ACCIÓN EXCEL - VER TODO */
+.malla-btn-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 14px 20px;
+  background: var(--bg-deep);
+  border: none;
+  border-top: 1px solid var(--border-strong);
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 13px;
+  text-decoration: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.15s ease;
+}
+
+.malla-btn-action:hover {
+  background: var(--border-strong);
+  color: var(--text-white);
+}
+
+.malla-btn-action .action-icon {
+  font-size: 14px;
 }
 
 .mallas-detail {
   min-height: 400px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border-strong);
+  padding: 32px;
+  border-radius: var(--radius);
 }
 
 .malla-info {
@@ -1475,80 +1509,96 @@ body.light-theme .map-iframe {
   display: block;
 }
 
+/* DETALLE DE MALLA */
+.malla-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--border-strong);
+  padding-bottom: 14px;
+  margin-bottom: 24px;
+}
+
 .malla-info .mi-num {
-  font-size: clamp(64px, 8vw, 110px);
-  font-weight: 950;
+  font-size: 40px;
+  font-weight: 900;
   color: var(--text-white);
-  letter-spacing: -0.04em;
-  line-height: 0.9;
-  margin-bottom: 8px;
-  display: block;
+  letter-spacing: -0.02em;
+  line-height: 1;
 }
 
 .malla-info .mi-size {
-  font-size: 16px;
+  font-size: 14px;
   color: var(--gold);
   font-weight: 700;
-  margin-bottom: 36px;
-  display: block;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
 }
 
-.industries-list {
-  list-style: none;
+.malla-detail-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.malla-column-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-gray);
+  margin-bottom: 14px;
+  display: block;
+}
+
+.malla-industries-list {
   display: flex;
   flex-direction: column;
-  gap: 1px;
-  background: var(--border-strong);
-  border: 1px solid var(--border-strong);
-  margin-bottom: 32px;
+  gap: 12px;
 }
 
-.industries-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-  padding: 24px;
-  background: var(--bg-alt);
+.malla-industry-card {
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold);
+  padding: 16px;
+  border-radius: var(--radius);
 }
 
-.industries-list li .ind-name {
-  font-size: 16px;
+.malla-industry-card .ind-name {
+  font-size: 14px;
   font-weight: 700;
   color: var(--text-white);
-  display: block;
   margin-bottom: 6px;
 }
 
-.industries-list li .ind-desc {
-  font-size: 14px;
+.malla-industry-card .ind-desc {
+  font-size: 13px;
   color: var(--text-gray);
-  line-height: 1.6;
-  display: block;
+  line-height: 1.4;
 }
 
-.malla-info .mineral-for {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--text-gray);
-  border-top: 1px solid var(--border);
-  padding-top: 24px;
-  margin-top: 8px;
+.malla-badges-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.malla-info .mineral-for span {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 6px 14px;
-  background: var(--border-strong);
-  color: var(--text-white);
+.malla-badge {
   font-size: 11px;
-  margin-right: 6px;
   font-weight: 700;
-  letter-spacing: 0.1em;
-  border-left: 2px solid var(--gold);
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  color: var(--text-white);
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  letter-spacing: 0.02em;
+  transition: all 0.15s ease;
+}
+
+.malla-badge:hover {
+  border-color: var(--gold);
+  color: var(--gold);
 }
 
 /* ============================================================
@@ -2513,6 +2563,10 @@ body.light-theme .theme-toggle-btn .icon-moon {
     gap: 32px;
   }
 
+  .mallas-detail {
+    padding: 20px;
+  }
+
   .mallas-sidebar {
     position: static;
   }
@@ -2532,6 +2586,20 @@ body.light-theme .theme-toggle-btn .icon-moon {
     flex: 0 0 auto;
     border-bottom: none;
     border-right: 1px solid var(--border);
+    padding: 16px 20px;
+  }
+
+  .malla-btn.active {
+    border-left: none;
+    border-bottom: 3px solid var(--gold);
+    border-color: var(--border) var(--border) var(--gold) var(--border);
+  }
+
+  .malla-btn-action {
+    flex: 0 0 auto;
+    width: auto;
+    border-top: none;
+    border-left: 1px solid var(--border-strong);
     padding: 16px 20px;
   }
 
